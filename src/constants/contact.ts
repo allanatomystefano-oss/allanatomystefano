@@ -1,0 +1,48 @@
+export const CONTACT_INFO = {
+  instagram: {
+    username: "@all_anatomy",
+    url: "https://www.instagram.com/all_anatomy",
+  },
+  branches: {
+    colorines: {
+      id: "colorines",
+      name: "Colorines (San Pedro)",
+      fullName: "All Anatomy Plaza Colorines",
+      address: "Av. Real San Agustín, Plaza Colorines 102-L320, Zona San Agustín Campestre, 66270 San Pedro Garza García, N.L. (Tercer piso, al lado de Gain Pilates)",
+      phone: "+52 81 1639 4613",
+      phoneRaw: "8116394613",
+      whatsappUrl: "https://wa.me/528116394613?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20la%20sucursal%20Colorines%20San%20Pedro",
+      agendaProUrl: "https://allanatomy.site.agendapro.com/mx/sucursal/10668",
+      mapsUrl: "https://www.google.com/maps?q=Plaza+Colorines,+Av.+Real+San+Agustin+102,+Zona+San+Agust%C3%ADn+Campestre,+66278+San+Pedro+Garza+Garc%C3%ADa,+N.L.&ftid=0x8662be6fdb879c0b:0x86aad3e50b20e81d",
+      mapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.539281745232!2d-100.34484932484297!3d25.6534927774328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662be6fdb879c0b%3A0x86aad3e50b20e81d!2sPlaza%20Colorines!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx",
+      hours: [
+        { day: "Lunes a Jueves", time: "10:00 AM – 08:00 PM" },
+        { day: "Viernes", time: "10:00 AM – 05:00 PM" },
+        { day: "Sábado", time: "10:00 AM – 02:00 PM" },
+        { day: "Domingo", time: "Cerrado" },
+      ],
+      tag: "Sucursal San Pedro",
+      accent: "#7c3aed",
+    },
+    contry: {
+      id: "contry",
+      name: "Contry (Alfonso Reyes)",
+      fullName: "All Anatomy Contry",
+      address: "Av. Alfonso Reyes 218-222, Plaza AR218, Contry, 64860 Monterrey, N.L. (3er piso, entre Garza Sada y Revolución. Estacionamiento subterráneo disponible)",
+      phone: "+52 81 3417 3857",
+      phoneRaw: "8134173857",
+      whatsappUrl: "https://wa.me/528134173857?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20la%20sucursal%20Contry",
+      agendaProUrl: "https://allanatomy.site.agendapro.com/mx/sucursal/71550",
+      mapsUrl: "https://maps.app.goo.gl/e7b9JMNUdeeJaXx8A",
+      mapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.884594689025!2d-100.29177302484323!3d25.642055677427214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662c1dc9eefffff%3A0xe7b9JMNUdeeJaXx8A!2sAv%20Alfonso%20Reyes%20218%2C%20Contry%2C%2064860%20Monterrey%2C%20N.L.!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx",
+      hours: [
+        { day: "Lunes a Jueves", time: "11:00 AM – 07:00 PM" },
+        { day: "Viernes", time: "10:00 AM – 05:00 PM" },
+        { day: "Sábado", time: "10:00 AM – 02:00 PM" },
+        { day: "Domingo", time: "Cerrado" },
+      ],
+      tag: "Sucursal Monterrey Sur",
+      accent: "#ea580c",
+    },
+  },
+};
