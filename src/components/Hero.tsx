@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, ChevronDown, Star, Shield, Award } from "lucide-react";
+import { MessageCircle, ChevronDown, Star, Shield, Award, Sparkles } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import BranchModal from "./BranchModal";
 
@@ -89,36 +90,70 @@ export default function Hero() {
           }}
         >
           <div style={{ maxWidth: "760px" }}>
-            {/* Pre-badge */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.35rem 0.9rem",
-                borderRadius: "9999px",
-                border: "1px solid rgba(245,197,24,0.35)",
-                background: "rgba(245,197,24,0.08)",
-                marginBottom: "1.75rem",
-              }}
-            >
-              <Star size={11} fill="#f5c518" style={{ color: "#f5c518" }} />
-              <span
+            {/* Pre-badge row */}
+            <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "1.75rem" }}>
+              <Link href="/saltillo" style={{ textDecoration: "none" }}>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.7 }}
+                  whileHover={{ scale: 1.05 }}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    padding: "0.35rem 0.9rem",
+                    borderRadius: "9999px",
+                    border: "1px solid rgba(234, 88, 12, 0.4)",
+                    background: "rgba(234, 88, 12, 0.12)",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Sparkles size={11} style={{ color: "var(--orange)" }} />
+                  <span
+                    style={{
+                      fontSize: "0.75rem",
+                      fontFamily: "'Inter', sans-serif",
+                      fontWeight: 700,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      color: "#fff",
+                    }}
+                  >
+                    📍 Saltillo: 20 Ago — Agendar Lugar
+                  </span>
+                </motion.div>
+              </Link>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
                 style={{
-                  fontSize: "0.75rem",
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 600,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: "#f5c518",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  padding: "0.35rem 0.9rem",
+                  borderRadius: "9999px",
+                  border: "1px solid rgba(245,197,24,0.35)",
+                  background: "rgba(245,197,24,0.08)",
                 }}
               >
-                #1 Clínica de Quiropráctica en Monterrey
-              </span>
-            </motion.div>
+                <Star size={11} fill="#f5c518" style={{ color: "#f5c518" }} />
+                <span
+                  style={{
+                    fontSize: "0.75rem",
+                    fontFamily: "'Inter', sans-serif",
+                    fontWeight: 600,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "#f5c518",
+                  }}
+                >
+                  #1 Clínica de Quiropráctica en Monterrey
+                </span>
+              </motion.div>
+            </div>
 
             {/* Main headline */}
             <motion.h1
