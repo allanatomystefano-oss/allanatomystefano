@@ -109,7 +109,7 @@ export default function Navbar() {
               margin: 0,
               padding: 0,
             }}
-            className="hidden md:flex"
+            className="hide-on-mobile"
           >
             {navLinks.map((link) => (
               <li key={link.href} style={{ position: "relative" }}>
@@ -164,7 +164,7 @@ export default function Navbar() {
           <div style={{ display: "flex", alignItems: "center", gap: "1rem", zIndex: 1001 }}>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="btn-whatsapp hidden md:inline-flex"
+              className="btn-whatsapp hide-on-mobile"
               id="nav-cta-whatsapp"
               style={{
                 padding: "0.65rem 1.5rem",
@@ -198,7 +198,7 @@ export default function Navbar() {
                 gap: "5px",
                 transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
-              className="md:hidden"
+              className="show-only-on-mobile"
             >
               {/* Top Line */}
               <span

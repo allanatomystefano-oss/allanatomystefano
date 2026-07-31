@@ -289,3 +289,19 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Selection */
 ::selection { background: rgba(234, 88, 12, 0.35); color: var(--white); }
+
+/* ============================================
+   RESPONSIVE UTILITIES (INFALLIBLE MEDIA QUERIES)
+   ============================================ */
+@media (max-width: 991px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .show-only-on-mobile {
+    display: none !important;
+  }
+}
+
