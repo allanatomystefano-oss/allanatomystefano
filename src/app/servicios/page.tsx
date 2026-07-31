@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 import { CheckCircle2, Phone, Calendar, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import BranchModal from "@/components/BranchModal";
@@ -309,21 +310,53 @@ export default function ServiciosPage() {
 
                   {/* Action Booking & Branch Phones */}
                   <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                    <button
-                      onClick={() => setIsModalOpen(true)}
-                      className="btn-whatsapp"
-                      id={`service-book-btn-${service.id}`}
-                      style={{
-                        width: "100%",
-                        justifyContent: "center",
-                        borderRadius: "1.25rem",
-                        padding: "1rem 2rem",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <Calendar size={16} />
-                      Agendar Sesión (WhatsApp / Online)
-                    </button>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
+                      <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="btn-whatsapp"
+                        id={`service-book-btn-${service.id}`}
+                        style={{
+                          width: "100%",
+                          justifyContent: "center",
+                          borderRadius: "1.25rem",
+                          padding: "1rem 1.5rem",
+                          cursor: "pointer",
+                          fontSize: "0.82rem",
+                        }}
+                      >
+                        <Calendar size={15} />
+                        Agendar Sesión
+                      </button>
+                      <Link
+                        href={`/servicios/${service.id === "descompresion" ? "descompresion-axial" : service.id === "quiropractica" ? "quiropractica" : service.id === "masaje" ? "masaje-deportivo" : "puncion-seca"}`}
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "0.4rem",
+                          padding: "1rem 1.5rem",
+                          borderRadius: "1.25rem",
+                          background: "rgba(255,255,255,0.03)",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                          color: "#fff",
+                          fontFamily: "'Inter', sans-serif",
+                          fontSize: "0.82rem",
+                          fontWeight: 600,
+                          textDecoration: "none",
+                          transition: "all 0.25s",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                          e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "rgba(255,255,255,0.03)";
+                          e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+                        }}
+                      >
+                        Ver detalles <ArrowRight size={14} style={{ color: service.color }} />
+                      </Link>
+                    </div>
 
                     {/* Quick branch contact row */}
                     <div

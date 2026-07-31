@@ -13,7 +13,7 @@ const services = [
     description:
       "Ajustes vertebrales profesionales para aliviar el dolor, mejorar la postura y restaurar la función nerviosa. Sin medicamentos.",
     color: "#7c3aed",
-    href: "/servicios#quiropractica",
+    href: "/servicios/quiropractica",
     image: "/service-chiro.png",
   },
   {
@@ -23,7 +23,7 @@ const services = [
     description:
       "Nuestra técnica propia con reconocimiento oficial SEP-Conocer. Indicada para hernias discales, ciática y compresión vertebral crónica.",
     color: "#ea580c",
-    href: "/servicios#descompresion",
+    href: "/servicios/descompresion-axial",
     image: "/anatomy-bg.png",
     featured: true,
   },
@@ -34,7 +34,7 @@ const services = [
     description:
       "Técnicas especializadas para atletas y personas activas. Recuperación muscular, prevención de lesiones y rendimiento óptimo.",
     color: "#e63327",
-    href: "/servicios#masaje",
+    href: "/servicios/masaje-deportivo",
     image: "/service-sports.png",
   },
   {
@@ -44,7 +44,7 @@ const services = [
     description:
       "Tratamiento efectivo de puntos gatillo y dolor miofascial. Rápida recuperación de lesiones musculares crónicas sin medicamentos.",
     color: "#f5c518",
-    href: "/servicios#puncion",
+    href: "/servicios/puncion-seca",
     image: "/clinic.png",
   },
 ];
