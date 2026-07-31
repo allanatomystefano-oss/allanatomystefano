@@ -4,12 +4,9 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, MapPin, DollarSign, Users, CheckCircle2, ArrowRight, ShieldAlert, Sparkles, Star, Trophy, Clock, Image as ImageIcon } from "lucide-react";
-import BranchModal from "@/components/BranchModal";
-import { CONTACT_INFO } from "@/constants/contact";
+import { motion } from "framer-motion";
+import { Calendar, MapPin, DollarSign, Users, CheckCircle2, ArrowRight, ShieldAlert, Sparkles, Star, Trophy, Clock } from "lucide-react";
 
-// Define TypeScript interfaces for structural clean codes
 interface Testimonial {
   name: string;
   role: string;
@@ -38,25 +35,14 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const galleryTabs = ["Ajustes en Acción", "Instalaciones Clínicas", "Tecnología"];
-const galleryImages = {
-  "Ajustes en Acción": [
-    { src: "/patient-herrera.jpg", alt: "Ajuste a Miguel Herrera" },
-    { src: "/patient-carioca.jpg", alt: "Ajuste a Rafael Carioca" },
-  ],
-  "Instalaciones Clínicas": [
-    { src: "/clinic.png", alt: "Instalaciones Premium" },
-    { src: "/hero-bg.png", alt: "Cabina de Tratamiento" },
-  ],
-  "Tecnología": [
-    { src: "/anatomy-bg.png", alt: "Descompresión Axial Columna" },
-    { src: "/service-chiro.png", alt: "Scanner y Valoración" },
-  ],
-};
+const galleryImages = [
+  { src: "/patient-herrera.jpg", alt: "Ajuste a Miguel Herrera" },
+  { src: "/patient-carioca.jpg", alt: "Ajuste a Rafael Carioca" },
+  { src: "/clinic.png", alt: "Instalaciones Premium" },
+  { src: "/anatomy-bg.png", alt: "Descompresión Axial Columna" },
+];
 
 export default function SaltilloPage() {
-  const [activeTab, setActiveTab] = useState<"Ajustes en Acción" | "Instalaciones Clínicas" | "Tecnología">("Ajustes en Acción");
-  const [selectedPass, setSelectedPass] = useState<"basico" | "completo">("basico");
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -65,19 +51,6 @@ export default function SaltilloPage() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const passPricing = {
-    basico: {
-      title: "Ajuste Quiropráctico",
-      price: "$1,000",
-      details: "Incluye Valoración Postural + Ajuste de toda la columna vertebral realizado por Edgar Delgado.",
-    },
-    completo: {
-      title: "Tratamiento VIP Completo",
-      price: "$1,800",
-      details: "Incluye Valoración + Ajuste Quiropráctico Completo + 1 Terapia de Punción Seca o Masaje Deportivo de Descarga Localizado.",
-    },
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) {
@@ -85,8 +58,7 @@ export default function SaltilloPage() {
       return;
     }
 
-    const currentPass = passPricing[selectedPass];
-    const message = `¡Hola All Anatomy! Acabo de registrarme para la Edición Especial de Ajustes en Saltillo el jueves 20 de agosto.\n\nDetalles del Registro:\n- Nombre: ${formData.name}\n- WhatsApp: ${formData.phone}\n- Pase Elegido: ${currentPass.title} (${currentPass.price} MXN)\n- Horario sugerido: ${formData.timeSlot}\n- Síntomas: ${formData.symptoms || "Check-up general"}`;
+    const message = `¡Hola All Anatomy! Me gustaría agendar mi cita para el Ajuste Quiropráctico en Saltillo el viernes 14 de agosto.\n\nDetalles del Registro:\n- Nombre: ${formData.name}\n- WhatsApp: ${formData.phone}\n- Horario sugerido: ${formData.timeSlot}\n- Síntomas/Molestia: ${formData.symptoms || "Check-up general"}\n- Costo: $1,000 MXN (Efectivo)`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/528134173857?text=${encodedMessage}`;
 
@@ -101,13 +73,13 @@ export default function SaltilloPage() {
       <Navbar />
       <main style={{ paddingTop: "6.5rem", background: "#020202", minHeight: "100vh", position: "relative" }}>
         
-        {/* Glow ambient background like Bieneq */}
+        {/* Glow ambient background */}
         <div
           style={{
             position: "fixed",
             inset: 0,
             zIndex: 0,
-            background: "radial-gradient(circle at 50% 30%, rgba(124, 58, 237, 0.04) 0%, transparent 60%)",
+            background: "radial-gradient(circle at 50% 30%, rgba(234, 88, 12, 0.04) 0%, transparent 60%)",
             pointerEvents: "none",
           }}
         />
@@ -115,7 +87,7 @@ export default function SaltilloPage() {
         {/* Hero Section */}
         <section
           style={{
-            minHeight: "90vh",
+            minHeight: "85vh",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -126,17 +98,17 @@ export default function SaltilloPage() {
             textAlign: "center",
           }}
         >
-          <div style={{ maxWidth: "900px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <div style={{ maxWidth: "950px", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
                 padding: "0.5rem 1.25rem",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "rgba(234,88,12,0.1)",
+                border: "1px solid rgba(234,88,12,0.25)",
                 borderRadius: "9999px",
-                color: "var(--yellow)",
+                color: "var(--orange)",
                 fontSize: "0.75rem",
                 fontWeight: 700,
                 textTransform: "uppercase",
@@ -146,23 +118,23 @@ export default function SaltilloPage() {
               }}
             >
               <Sparkles size={13} className="animate-pulse" />
-              Edición Especial Coahuila
+              Fecha Especial en Coahuila
             </div>
 
             <h1
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: "clamp(3rem, 8vw, 7.5rem)",
+                fontSize: "clamp(3rem, 7.5vw, 6.5rem)",
                 fontWeight: 900,
                 color: "#fff",
-                lineHeight: 0.9,
+                lineHeight: 0.95,
                 letterSpacing: "-0.04em",
-                marginBottom: "2rem",
+                marginBottom: "2.5rem",
               }}
             >
-              <span style={{ display: "block" }}>Clínica de</span>
-              <span style={{ display: "block", background: "var(--gradient-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ajuste Vertebral</span>
-              <span style={{ display: "block" }}>en Saltillo</span>
+              <span style={{ display: "block" }}>El Mejor Ajuste</span>
+              <span style={{ display: "block", background: "var(--gradient-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Quiropráctico</span>
+              <span style={{ display: "block" }}>llega a Saltillo</span>
             </h1>
 
             {/* Event Specs row */}
@@ -181,7 +153,11 @@ export default function SaltilloPage() {
             >
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <Calendar size={18} style={{ color: "#7c3aed" }} />
-                <span>Jueves 20 de Agosto</span>
+                <span style={{ color: "#fff", fontWeight: 600 }}>Viernes 14 de Agosto</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+                <Clock size={18} style={{ color: "#f5c518" }} />
+                <span>Desde las 9:00 AM</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <MapPin size={18} style={{ color: "#e63327" }} />
@@ -202,7 +178,7 @@ export default function SaltilloPage() {
                 gap: "0.5rem",
               }}
             >
-              <span>Scroll para explorar</span>
+              <span>Desliza para agendar tu lugar</span>
               <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
                 <ArrowRight size={16} style={{ transform: "rotate(90deg)", color: "rgba(255,255,255,0.3)" }} />
               </motion.div>
@@ -210,14 +186,14 @@ export default function SaltilloPage() {
           </div>
         </section>
 
-        {/* Content Section (Grid Column) */}
+        {/* Content Section */}
         <section
           style={{
             maxWidth: "1280px",
             margin: "0 auto",
             padding: "0 1.5rem 8rem",
-            display: "grid",
-            gridTemplateColumns: "1fr",
+            position: "relative",
+            zIndex: 1,
           }}
         >
           <div
@@ -235,39 +211,69 @@ export default function SaltilloPage() {
               <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
                   <div style={{ width: "40px", height: "2px", background: "var(--gradient-brand)" }} />
-                  <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.6rem", fontWeight: 700, color: "#fff", textTransform: "uppercase", letterSpacing: "-0.01em", italic: "true" } as any}>
-                    Misión Clínica en Saltillo ✨
+                  <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#fff", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                    Fecha Clínica Especial 📍
                   </h2>
                 </div>
                 <div
                   style={{
-                    background: "rgba(255,255,255,0.02)",
-                    border: "1px solid rgba(255,255,255,0.05)",
+                    background: "rgba(255,255,255,0.01)",
+                    border: "1px solid rgba(255,255,255,0.04)",
                     borderRadius: "2rem",
                     padding: "2.5rem",
-                    position: "relative",
-                    overflow: "hidden",
                   }}
                 >
-                  <p style={{ fontSize: "1.25rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, fontWeight: 300, fontStyle: "italic", fontFamily: "'Inter', sans-serif" }}>
-                    "Trasladamos temporalmente nuestro consultorio clínico a Saltillo para acercar la quiropráctica de alto rendimiento a pacientes que buscan corregir dolores de columna de raíz, guiados bajo el estándar médico que nos caracteriza en Monterrey."
+                  <p style={{ fontSize: "1.15rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, fontWeight: 300, fontFamily: "'Inter', sans-serif" }}>
+                    Esta fecha especial está diseñada exclusivamente para brindar el **servicio de ajuste quiropráctico** a pacientes que nos conocen de Saltillo pero que se les complica trasladarse a nuestras sucursales de Monterrey. 
+                  </p>
+                  <p style={{ fontSize: "1.15rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, fontWeight: 300, fontFamily: "'Inter', sans-serif", marginTop: "1rem" }}>
+                    Abriremos una jornada única de ajustes individuales para ayudarte a aliviar tensiones musculares y corregir desalineaciones de forma directa.
                   </p>
                 </div>
               </div>
 
-              {/* Instructor/Specialist Bio */}
+              {/* Flyer Image */}
               <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
                   <div style={{ width: "40px", height: "2px", background: "var(--gradient-brand)" }} />
-                  <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.6rem", fontWeight: 700, color: "#fff", textTransform: "uppercase" }}>
-                    Tu Especialista 🎓
+                  <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#fff", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                    Flyer del Evento 📋
+                  </h2>
+                </div>
+                <div
+                  style={{
+                    position: "relative",
+                    borderRadius: "2rem",
+                    overflow: "hidden",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                    aspectRatio: "1.25",
+                    width: "100%",
+                    background: "rgba(10,10,10,0.5)",
+                  }}
+                >
+                  <Image
+                    src="/flyer-saltillo.png"
+                    alt="Flyer Oficial Saltillo Ajuste Quiropráctico"
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "center" }}
+                    quality={95}
+                  />
+                </div>
+              </div>
+
+              {/* Specialist Bio */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                  <div style={{ width: "40px", height: "2px", background: "var(--gradient-brand)" }} />
+                  <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#fff", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                    Tu Quiropráctico 🎓
                   </h2>
                 </div>
 
                 <div
                   style={{
-                    background: "linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)",
-                    border: "1px solid rgba(255,255,255,0.06)",
+                    background: "linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%)",
+                    border: "1px solid rgba(255,255,255,0.05)",
                     borderRadius: "2.5rem",
                     padding: "2.5rem",
                     display: "flex",
@@ -276,7 +282,7 @@ export default function SaltilloPage() {
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
-                    <div style={{ position: "relative", width: "100px", height: "100px", borderRadius: "2rem", overflow: "hidden", border: "2px solid rgba(255,255,255,0.1)" }}>
+                    <div style={{ position: "relative", width: "90px", height: "90px", borderRadius: "1.5rem", overflow: "hidden", border: "2px solid rgba(255,255,255,0.1)" }}>
                       <Image
                         src="/patient-herrera-clean.jpg"
                         alt="Edgar Delgado"
@@ -285,71 +291,41 @@ export default function SaltilloPage() {
                       />
                     </div>
                     <div style={{ textAlign: "left" }}>
-                      <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#fff" }}>Edgar Delgado</h4>
-                      <p style={{ fontSize: "0.82rem", color: "var(--orange)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>
-                        Director Clínico & Fundador
+                      <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.3rem", fontWeight: 700, color: "#fff" }}>Edgar Delgado</h4>
+                      <p style={{ fontSize: "0.78rem", color: "var(--orange)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                        Director Clínico & Especialista
                       </p>
                     </div>
                   </div>
 
-                  <p style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, fontFamily: "'Inter', sans-serif", fontStyle: "italic" }}>
-                    "Creador de la técnica de Descompresión Axial en All Anatomy con validez SEP. Ha tratado con éxito a leyendas del fútbol mexicano y mundial, brindando el mismo cuidado clínico a pacientes de toda la república."
+                  <p style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+                    Especialista en quiropráctica deportiva de alto rendimiento. Ha ajustado a leyendas mundiales y futbolistas de Tigres UANL y Rayados. Creador de la técnica de Descompresión Axial registrada ante la SEP.
                   </p>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.8rem", color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>
-                      <Trophy size={14} style={{ color: "var(--yellow)" }} />
-                      <span>Especialista en Quiropráctica y Biomecánica</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.82rem", color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>
+                      <Trophy size={14} style={{ color: "var(--yellow)", flexShrink: 0 }} />
+                      <span>Especialista Certificado en Quiropráctica y Biomecánica</span>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.8rem", color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>
-                      <Trophy size={14} style={{ color: "var(--yellow)" }} />
-                      <span>Avalado oficialmente por SEP y cuenta verificada</span>
-                    </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.8rem", color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>
-                      <Trophy size={14} style={{ color: "var(--yellow)" }} />
-                      <span>+49,000 Ajustes Espinales realizados</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.82rem", color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>
+                      <Trophy size={14} style={{ color: "var(--yellow)", flexShrink: 0 }} />
+                      <span>+49,000 Ajustes Espinales en pacientes clínicos</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Gallery with Tabs */}
+              {/* Gallery Grid */}
               <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
                   <div style={{ width: "40px", height: "2px", background: "var(--gradient-brand)" }} />
-                  <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.6rem", fontWeight: 700, color: "#fff", textTransform: "uppercase" }}>
-                    Galería Clínica 📷
+                  <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#fff", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                    El Ajuste en Acción 📷
                   </h2>
                 </div>
 
-                {/* Tabs switcher */}
-                <div style={{ display: "flex", gap: "0.5rem", overflowX: "auto", paddingBottom: "0.5rem" }}>
-                  {galleryTabs.map((tab) => (
-                    <button
-                      key={tab}
-                      onClick={() => setActiveTab(tab as any)}
-                      style={{
-                        padding: "0.75rem 1.5rem",
-                        borderRadius: "1.25rem",
-                        fontSize: "0.8rem",
-                        fontWeight: 700,
-                        fontFamily: "'Inter', sans-serif",
-                        border: "1px solid rgba(255,255,255,0.06)",
-                        background: activeTab === tab ? "#fff" : "rgba(255,255,255,0.03)",
-                        color: activeTab === tab ? "#000" : "rgba(255,255,255,0.45)",
-                        cursor: "pointer",
-                        transition: "all 0.25s",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {tab}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Tab Content Images Grid */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
-                  {galleryImages[activeTab].map((img, i) => (
+                  {galleryImages.map((img, i) => (
                     <div
                       key={i}
                       style={{
@@ -366,7 +342,7 @@ export default function SaltilloPage() {
                         alt={img.alt}
                         fill
                         style={{ objectFit: "cover" }}
-                        quality={85}
+                        quality={80}
                       />
                     </div>
                   ))}
@@ -374,20 +350,20 @@ export default function SaltilloPage() {
               </div>
             </div>
 
-            {/* Right Sticky Sidebar (Booking Pass Funnel) */}
+            {/* Right Sticky Sidebar: Registration Form Box */}
             <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
               <div
                 style={{
-                  background: "rgba(12, 12, 12, 0.8)",
+                  background: "rgba(12, 12, 12, 0.9)",
                   border: "1px solid rgba(255, 255, 255, 0.08)",
                   borderRadius: "2.5rem",
                   padding: "2.5rem 2rem",
-                  backdropFilter: "blur(30px)",
                   boxShadow: "0 50px 100px -30px rgba(0,0,0,0.9)",
+                  position: "sticky",
+                  top: "8.5rem",
                 }}
               >
                 <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-                  {/* Spots Alert */}
                   <div
                     style={{
                       display: "inline-flex",
@@ -407,88 +383,21 @@ export default function SaltilloPage() {
                     }}
                   >
                     <ShieldAlert size={12} />
-                    ¡Solo 50 Lugares en total!
+                    Cupo de 30 a 50 citas
                   </div>
 
-                  <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.75rem", fontWeight: 800, color: "#fff", marginBottom: "0.25rem" }}>
-                    Reserva tu Cita 🎟️
+                  <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.75rem", fontWeight: 800, color: "#fff", marginBottom: "0.25rem", letterSpacing: "-0.01em" }}>
+                    Agenda tu Cita 🎟️
                   </h3>
-                  <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.4)", fontFamily: "'Inter', sans-serif" }}>
-                    Selecciona tu nivel de tratamiento clínico
+                  <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.45)", fontFamily: "'Inter', sans-serif" }}>
+                    Secuencia del servicio de ajuste clínico
                   </p>
-                </div>
-
-                {/* Level selection buttons */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginBottom: "2rem" }}>
-                  <span style={{ fontSize: "0.7rem", fontWeight: 700, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.15em", marginLeft: "0.5rem" }}>
-                    Tipo de Pase
-                  </span>
-                  
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
-                    <button
-                      onClick={() => setSelectedPass("basico")}
-                      style={{
-                        padding: "1rem",
-                        borderRadius: "1.5rem",
-                        border: selectedPass === "basico" ? "1px solid #fff" : "1px solid rgba(255,255,255,0.06)",
-                        background: selectedPass === "basico" ? "#fff" : "rgba(255,255,255,0.02)",
-                        color: selectedPass === "basico" ? "#000" : "rgba(255,255,255,0.6)",
-                        cursor: "pointer",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: "0.25rem",
-                        transition: "all 0.25s",
-                      }}
-                    >
-                      <span style={{ fontSize: "0.85rem", fontWeight: 700 }}>Ajuste</span>
-                      <span style={{ fontSize: "0.95rem", fontWeight: 800 }}>$1,000</span>
-                      <span style={{ fontSize: "0.62rem", opacity: 0.6 }}>Básico</span>
-                    </button>
-
-                    <button
-                      onClick={() => setSelectedPass("completo")}
-                      style={{
-                        padding: "1rem",
-                        borderRadius: "1.5rem",
-                        border: selectedPass === "completo" ? "1px solid var(--grad-start)" : "1px solid rgba(255,255,255,0.06)",
-                        background: selectedPass === "completo" ? "rgba(124, 58, 237, 0.1)" : "rgba(255,255,255,0.02)",
-                        color: selectedPass === "completo" ? "#fff" : "rgba(255,255,255,0.6)",
-                        cursor: "pointer",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: "0.25rem",
-                        transition: "all 0.25s",
-                      }}
-                    >
-                      <span style={{ fontSize: "0.85rem", fontWeight: 700 }}>Ajuste + VIP</span>
-                      <span style={{ fontSize: "0.95rem", fontWeight: 800 }}>$1,800</span>
-                      <span style={{ fontSize: "0.62rem", color: "var(--grad-start)", fontWeight: 700 }}>Tratamiento Completo</span>
-                    </button>
-                  </div>
-
-                  {/* Pass Description Box */}
-                  <div
-                    style={{
-                      background: "rgba(255,255,255,0.01)",
-                      border: "1px solid rgba(255,255,255,0.04)",
-                      borderRadius: "1.25rem",
-                      padding: "1.25rem",
-                      fontSize: "0.82rem",
-                      color: "rgba(255,255,255,0.5)",
-                      fontFamily: "'Inter', sans-serif",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <strong>Incluye:</strong> {passPricing[selectedPass].details}
-                  </div>
                 </div>
 
                 {/* Form fields */}
                 <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-                    <label style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", fontFamily: "'Inter', sans-serif" }}>
+                    <label style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>
                       Nombre Completo *
                     </label>
                     <input
@@ -502,7 +411,7 @@ export default function SaltilloPage() {
                   </div>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-                    <label style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", fontFamily: "'Inter', sans-serif" }}>
+                    <label style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>
                       Número de WhatsApp *
                     </label>
                     <input
@@ -516,8 +425,8 @@ export default function SaltilloPage() {
                   </div>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-                    <label style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", fontFamily: "'Inter', sans-serif" }}>
-                      Horario sugerido
+                    <label style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>
+                      Bloque de Horario Sugerido
                     </label>
                     <select
                       className="input-premium"
@@ -534,17 +443,43 @@ export default function SaltilloPage() {
                   </div>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-                    <label style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", fontFamily: "'Inter', sans-serif" }}>
-                      Síntomas / Motivo de consulta
+                    <label style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>
+                      Síntomas o dolor principal
                     </label>
                     <textarea
                       rows={2}
-                      placeholder="Ej. Dolor lumbar crónico, postura"
+                      placeholder="Ej. Dolor lumbar, dolor de cuello"
                       className="input-premium"
                       style={{ resize: "none" }}
                       value={formData.symptoms}
                       onChange={(e) => setFormData({ ...formData, symptoms: e.target.value })}
                     />
+                  </div>
+
+                  {/* Pricing Box */}
+                  <div
+                    style={{
+                      background: "rgba(255,255,255,0.01)",
+                      border: "1px solid rgba(255,255,255,0.05)",
+                      borderRadius: "1.25rem",
+                      padding: "1.25rem",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      marginTop: "0.5rem",
+                    }}
+                  >
+                    <div>
+                      <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.05em", display: "block" }}>
+                        Costo de la Sesión
+                      </span>
+                      <strong style={{ fontSize: "1rem", color: "#fff", fontFamily: "'Space Grotesk', sans-serif" }}>
+                        Ajuste Quiropráctico completo
+                      </strong>
+                    </div>
+                    <span style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--yellow)", fontFamily: "'Space Grotesk', sans-serif" }}>
+                      $1,000
+                    </span>
                   </div>
 
                   <button
@@ -555,17 +490,17 @@ export default function SaltilloPage() {
                       justifyContent: "center",
                       borderRadius: "1.25rem",
                       padding: "1.1rem 2rem",
-                      marginTop: "1rem",
+                      marginTop: "0.5rem",
                       cursor: "pointer",
                       boxShadow: "0 10px 30px -10px rgba(37,211,102,0.4)",
                     }}
                   >
-                    {submitted ? "Redirigiendo..." : "Confirmar Mi Registro"}
+                    {submitted ? "Redirigiendo..." : "Solicitar Cita en WhatsApp"}
                     <ArrowRight size={16} />
                   </button>
                 </form>
 
-                {/* Cash warning */}
+                {/* Important terms */}
                 <div
                   style={{
                     display: "flex",
@@ -580,7 +515,7 @@ export default function SaltilloPage() {
                 >
                   <ShieldAlert size={16} style={{ color: "var(--orange)", flexShrink: 0, marginTop: "1px" }} />
                   <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.4, fontFamily: "'Inter', sans-serif" }}>
-                    <strong>Pago en efectivo:</strong> Los montos se liquidan directamente el día del evento en la recepción clínica.
+                    <strong>Cupo Limitado:</strong> Mínimo de 30 personas confirmadas para activar la fecha, con un máximo de 50 citas. Solo pago en efectivo en la recepción del evento.
                   </p>
                 </div>
               </div>
@@ -588,7 +523,7 @@ export default function SaltilloPage() {
           </div>
         </section>
 
-        {/* Testimonials (Communidad All Anatomy) */}
+        {/* Testimonials */}
         <section
           style={{
             padding: "6rem 1.5rem 8rem",
@@ -601,15 +536,15 @@ export default function SaltilloPage() {
           <div style={{ maxWidth: "1240px", margin: "0 auto", position: "relative", zIndex: 1 }}>
             <div style={{ textAlign: "center", marginBottom: "4rem" }}>
               <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#fff", marginBottom: "1rem" }}>
-                Voces de nuestra{" "}
-                <span style={{ color: "var(--orange)", fontStyle: "italic", fontWeight: 400 }}>Comunidad.</span>
+                Opiniones de nuestros{" "}
+                <span style={{ color: "var(--orange)", fontStyle: "italic", fontWeight: 400 }}>Pacientes.</span>
               </h2>
               <p style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.45)", fontFamily: "'Inter', sans-serif" }}>
-                Lo que dicen nuestros pacientes tras recibir el ajuste vertebral de All Anatomy.
+                Esto dicen las personas que ya se atienden con nosotros.
               </p>
             </div>
 
-            {/* Testimonials cards list */}
+            {/* Testimonials grid */}
             <div
               style={{
                 display: "grid",
@@ -628,11 +563,10 @@ export default function SaltilloPage() {
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
-                    minHeight: "260px",
+                    minHeight: "240px",
                   }}
                 >
                   <div>
-                    {/* Stars */}
                     <div style={{ display: "flex", gap: "0.25rem", marginBottom: "1rem" }}>
                       {[...Array(t.rating)].map((_, i) => (
                         <Star key={i} size={14} fill="var(--yellow)" style={{ color: "var(--yellow)" }} />
