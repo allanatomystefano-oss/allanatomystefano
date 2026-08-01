@@ -39,7 +39,7 @@ export default function Hero() {
           }}
         >
           <Image
-            src="/hero-bg.png"
+            src="/hero-bg-new.jpg"
             alt="All Anatomy — Clínica de Quiropráctica y Terapia Deportiva"
             fill
             priority
