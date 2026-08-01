@@ -38,14 +38,30 @@ export default function Hero() {
             zIndex: 0,
           }}
         >
-          <Image
-            src="/hero-bg-new.jpg"
-            alt="All Anatomy — Clínica de Quiropráctica y Terapia Deportiva"
-            fill
-            priority
-            style={{ objectFit: "cover", objectPosition: "center" }}
-            quality={95}
-          />
+          {/* Desktop version (hidden on mobile) */}
+          <div className="hide-on-mobile" style={{ position: "absolute", inset: 0 }}>
+            <Image
+              src="/hero-bg-new.jpg"
+              alt="All Anatomy — Clínica de Quiropráctica y Terapia Deportiva"
+              fill
+              priority
+              style={{ objectFit: "cover", objectPosition: "center" }}
+              quality={95}
+            />
+          </div>
+
+          {/* Mobile version (shown only on mobile) */}
+          <div className="show-only-on-mobile" style={{ position: "absolute", inset: 0 }}>
+            <Image
+              src="/hero-bg-mobile.jpg"
+              alt="All Anatomy — Clínica de Quiropráctica y Terapia Deportiva"
+              fill
+              priority
+              style={{ objectFit: "cover", objectPosition: "center" }}
+              quality={95}
+            />
+          </div>
+
           {/* Multi-layer dark overlay for text legibility */}
           <div
             style={{

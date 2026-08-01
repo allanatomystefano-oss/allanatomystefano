@@ -14,7 +14,7 @@ const services = [
       "Ajustes vertebrales profesionales para aliviar el dolor, mejorar la postura y restaurar la función nerviosa. Sin medicamentos.",
     color: "#7c3aed",
     href: "/servicios/quiropractica",
-    image: "/service-chiro.png",
+    image: "/edgar/edgar-hq-3.jpg",
   },
   {
     id: "descompresion",
@@ -24,7 +24,7 @@ const services = [
       "Nuestra técnica propia con reconocimiento oficial SEP-Conocer. Indicada para hernias discales, ciática y compresión vertebral crónica.",
     color: "#ea580c",
     href: "/servicios/descompresion-axial",
-    image: "/anatomy-bg.png",
+    image: "/edgar/edgar-action-2.jpg",
     featured: true,
   },
   {
@@ -35,7 +35,7 @@ const services = [
       "Técnicas especializadas para atletas y personas activas. Recuperación muscular, prevención de lesiones y rendimiento óptimo.",
     color: "#e63327",
     href: "/servicios/masaje-deportivo",
-    image: "/service-sports.png",
+    image: "/edgar/edgar-action-3.jpg",
   },
   {
     id: "puncion",
