@@ -36,10 +36,10 @@ const testimonials: Testimonial[] = [
 ];
 
 const galleryImages = [
-  { src: "/patient-herrera.jpg", alt: "Ajuste a Miguel Herrera" },
-  { src: "/patient-carioca.jpg", alt: "Ajuste a Rafael Carioca" },
-  { src: "/edgar/edgar-action-1.jpg", alt: "Ajuste manual de precisión" },
-  { src: "/edgar/edgar-action-2.jpg", alt: "Ajuste cervical clínico" },
+  { src: "/edgar/edgar-quiropractica-real.jpg", alt: "Ajuste manual clínico" },
+  { src: "/edgar/edgar-descompresion-real.jpg", alt: "Terapia de descompresión física" },
+  { src: "/edgar/edgar-action-1.jpg", alt: "Ajuste cervical de precisión" },
+  { src: "/edgar/edgar-action-3.jpg", alt: "Terapia física y deportiva" },
 ];
 
 export default function SaltilloPage() {
@@ -147,7 +147,7 @@ export default function SaltilloPage() {
             overflow: "hidden",
           }}
         >
-          {/* Stunning Background Image */}
+          {/* Stunning Background Image (Responsive) */}
           <div
             style={{
               position: "absolute",
@@ -155,14 +155,28 @@ export default function SaltilloPage() {
               zIndex: 0,
             }}
           >
-            <Image
-              src="/edgar/edgar-quiropractica-real.jpg"
-              alt="Edgar Delgado Ajuste Quiropráctico en Saltillo"
-              fill
-              priority
-              style={{ objectFit: "cover", objectPosition: "center 30%" }}
-              quality={90}
-            />
+            {/* Desktop Version */}
+            <div className="hide-on-mobile" style={{ position: "absolute", inset: 0 }}>
+              <Image
+                src="/hero-bg-new.jpg"
+                alt="All Anatomy Ajuste Quiropráctico en Saltillo"
+                fill
+                priority
+                style={{ objectFit: "cover", objectPosition: "center" }}
+                quality={90}
+              />
+            </div>
+            {/* Mobile Version */}
+            <div className="show-only-on-mobile" style={{ position: "absolute", inset: 0 }}>
+              <Image
+                src="/hero-bg-mobile.jpg"
+                alt="All Anatomy Ajuste Quiropráctico en Saltillo"
+                fill
+                priority
+                style={{ objectFit: "cover", objectPosition: "center" }}
+                quality={90}
+              />
+            </div>
             {/* Ambient Overlays */}
             <div
               style={{
