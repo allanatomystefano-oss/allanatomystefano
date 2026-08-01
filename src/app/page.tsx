@@ -5,6 +5,7 @@ import Services from "@/components/Services";
 import SymptomSelector from "@/components/SymptomSelector";
 import AboutPreview from "@/components/AboutPreview";
 import ElitePatients from "@/components/ElitePatients";
+import WorkGallery from "@/components/WorkGallery";
 import WhyUs from "@/components/WhyUs";
 import Locations from "@/components/Locations";
 import Testimonials from "@/components/Testimonials";
@@ -24,6 +25,7 @@ export default function Home() {
         <SymptomSelector />
         <AboutPreview />
         <ElitePatients />
+        <WorkGallery />
         <WhyUs />
         <Locations />
         <Testimonials />
