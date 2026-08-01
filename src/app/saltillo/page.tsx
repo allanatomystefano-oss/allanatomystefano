@@ -38,8 +38,8 @@ const testimonials: Testimonial[] = [
 const galleryImages = [
   { src: "/patient-herrera.jpg", alt: "Ajuste a Miguel Herrera" },
   { src: "/patient-carioca.jpg", alt: "Ajuste a Rafael Carioca" },
-  { src: "/clinic.png", alt: "Instalaciones Premium" },
-  { src: "/anatomy-bg.png", alt: "Descompresión Axial Columna" },
+  { src: "/edgar/edgar-action-1.jpg", alt: "Ajuste manual de precisión" },
+  { src: "/edgar/edgar-action-2.jpg", alt: "Ajuste cervical clínico" },
 ];
 
 export default function SaltilloPage() {
@@ -284,7 +284,7 @@ export default function SaltilloPage() {
                   <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
                     <div style={{ position: "relative", width: "90px", height: "90px", borderRadius: "1.5rem", overflow: "hidden", border: "2px solid rgba(255,255,255,0.1)" }}>
                       <Image
-                        src="/patient-herrera-clean.jpg"
+                        src="/edgar/edgar-profile.jpg"
                         alt="Edgar Delgado"
                         fill
                         style={{ objectFit: "cover" }}

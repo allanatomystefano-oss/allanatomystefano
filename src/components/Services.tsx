@@ -45,7 +45,7 @@ const services = [
       "Tratamiento efectivo de puntos gatillo y dolor miofascial. Rápida recuperación de lesiones musculares crónicas sin medicamentos.",
     color: "#f5c518",
     href: "/servicios/puncion-seca",
-    image: "/clinic.png",
+    image: "/edgar/edgar-hq-1.jpg",
   },
 ];
 
