@@ -76,15 +76,36 @@ export default function Footer() {
                 }}
                 id="footer-logo"
               >
-                <img
-                  src="/logo-white.png"
-                  alt="All Anatomy"
-                  style={{
-                    height: "36px",
-                    width: "auto",
-                    objectFit: "contain",
-                  }}
-                />
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  <span style={{ fontSize: "1.6rem", lineHeight: 1 }}>🦴</span>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", lineHeight: 1 }}>
+                    <span
+                      style={{
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontWeight: 900,
+                        fontSize: "1.15rem",
+                        color: "#fff",
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      All Anatomy
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: "0.42rem",
+                        color: "rgba(255,255,255,0.45)",
+                        fontWeight: 700,
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        marginTop: "0.1rem",
+                      }}
+                    >
+                      Chiropractic & Alternative Therapy
+                    </span>
+                  </div>
+                </div>
               </Link>
 
               <p
