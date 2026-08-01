@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ZoomIn, Eye } from "lucide-react";
@@ -15,7 +15,23 @@ const galleryImages = activeIds.map((id) => ({
 
 export default function WorkGallery() {
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const [initialCount, setInitialCount] = useState(8);
   const [visibleCount, setVisibleCount] = useState(8);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        const isMobile = window.innerWidth < 768;
+        const count = isMobile ? 4 : 8;
+        setInitialCount(count);
+        setVisibleCount((prev) => (prev === 8 || prev === 4 ? count : prev));
+      };
+      
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
 
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -36,7 +52,7 @@ export default function WorkGallery() {
   };
 
   const showLess = () => {
-    setVisibleCount(8);
+    setVisibleCount(initialCount);
   };
 
   const isMoreVisible = visibleCount < galleryImages.length;
