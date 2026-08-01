@@ -5,11 +5,12 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ZoomIn, Eye } from "lucide-react";
 
-// List of cropped real images of the clinic/Edgar Delgado's work
-const galleryImages = Array.from({ length: 17 }, (_, i) => ({
-  id: i + 1,
-  src: `/trabajo/trabajo-${i + 1}.jpg`,
-  alt: `Ajuste quiropráctico y terapia de rehabilitación - Caso ${i + 1}`,
+// List of cropped real images of the clinic/Edgar Delgado's work, excluding white-bordered images (10-16)
+const activeIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 17];
+const galleryImages = activeIds.map((id) => ({
+  id,
+  src: `/trabajo/trabajo-${id}.jpg`,
+  alt: `Ajuste quiropráctico y terapia de rehabilitación - Caso ${id}`,
 }));
 
 export default function WorkGallery() {

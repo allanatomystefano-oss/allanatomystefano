@@ -14,7 +14,7 @@ const services = [
       "Ajustes vertebrales profesionales para aliviar el dolor, mejorar la postura y restaurar la función nerviosa. Sin medicamentos.",
     color: "#7c3aed",
     href: "/servicios/quiropractica",
-    image: "/edgar/edgar-hq-3.jpg",
+    image: "/edgar/edgar-quiropractica-real.jpg",
   },
   {
     id: "descompresion",
@@ -24,7 +24,7 @@ const services = [
       "Nuestra técnica propia con reconocimiento oficial SEP-Conocer. Indicada para hernias discales, ciática y compresión vertebral crónica.",
     color: "#ea580c",
     href: "/servicios/descompresion-axial",
-    image: "/edgar/edgar-action-2.jpg",
+    image: "/edgar/edgar-descompresion-real.jpg",
     featured: true,
   },
   {

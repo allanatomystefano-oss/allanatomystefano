@@ -252,7 +252,7 @@ export default function SaltilloPage() {
                   }}
                 >
                   <Image
-                    src="/flyer-saltillo.png"
+                    src="/flyer-saltillo-real.jpg"
                     alt="Flyer Oficial Saltillo Ajuste Quiropráctico"
                     fill
                     style={{ objectFit: "cover", objectPosition: "center" }}
