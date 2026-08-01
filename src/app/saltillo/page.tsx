@@ -12,26 +12,42 @@ interface Testimonial {
   role: string;
   quote: string;
   rating: number;
+  city: string;
+  age: string;
+  pain: string;
+  result: string;
 }
 
 const testimonials: Testimonial[] = [
   {
     name: "Carlos Ochoa",
-    role: "Corredor de Maratón / Saltillo",
-    quote: "Tenía meses con un dolor lumbar que no me dejaba entrenar. Viajé a Monterrey por recomendación y ahora que vienen a Saltillo ya agendé a toda mi familia. El cambio es inmediato.",
+    role: "Corredor de Maratón",
+    quote: "Es el único tratamiento que realmente funcionó después de probar fisioterapia e inyecciones.",
     rating: 5,
+    city: "Saltillo",
+    age: "34 años",
+    pain: "Dolor lumbar crónico desde hacía 8 meses",
+    result: "Pude volver a correr y entrenar sin molestias desde la primera sesión.",
   },
   {
     name: "Dra. Sofía Garza",
-    role: "Médico Pediatra / Paciente Regular",
-    quote: "Como profesional de la salud soy exigente. La técnica de ajuste de Edgar y el profesionalismo de All Anatomy son insuperables. Totalmente recomendado.",
+    role: "Médico Pediatra",
+    quote: "La técnica de ajuste de Edgar Delgado y el profesionalismo de All Anatomy son insuperables.",
     rating: 5,
+    city: "Saltillo",
+    age: "42 años",
+    pain: "Dolor cervical severo y migraña por estrés",
+    result: "Desapareció la tensión del cuello y los dolores de cabeza disminuyeron un 90%.",
   },
   {
     name: "Ivan Huerta",
-    role: "Atleta de Alto Rendimiento / Triatleta",
-    quote: "La combinación de ajuste y descarga muscular deportiva me devolvió el rendimiento para mi competencia. La mejor inversión para mi salud física.",
+    role: "Triatleta de Alto Rendimiento",
+    quote: "El ajuste y la descompresión me devolvieron la movilidad completa.",
     rating: 5,
+    city: "Saltillo",
+    age: "29 años",
+    pain: "Compresión discal y ciática en pierna derecha",
+    result: "Alivio inmediato de la ciática y recuperación de fuerza muscular.",
   },
 ];
 
@@ -223,18 +239,19 @@ export default function SaltilloPage() {
             <h1
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: "clamp(3rem, 7.5vw, 6.5rem)",
+                fontSize: "clamp(2.3rem, 6.2vw, 4.5rem)",
                 fontWeight: 900,
                 color: "#fff",
-                lineHeight: 0.95,
-                letterSpacing: "-0.04em",
-                marginBottom: "2.5rem",
+                lineHeight: 1.05,
+                letterSpacing: "-0.03em",
+                marginBottom: "2rem",
                 textShadow: "0 10px 40px rgba(0,0,0,0.9)",
               }}
             >
-              <span style={{ display: "block" }}>El Mejor Ajuste</span>
-              <span style={{ display: "block", background: "var(--gradient-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Quiropráctico</span>
-              <span style={{ display: "block" }}>llega a Saltillo</span>
+              <span style={{ display: "block", color: "var(--yellow)" }}>¿Te duele la espalda, cuello o ciática?</span>
+              <span style={{ display: "block", fontSize: "0.52em", fontWeight: 600, marginTop: "1rem", color: "rgba(255,255,255,0.9)", lineHeight: 1.3 }}>
+                Elimina tu dolor desde la primera sesión con un ajuste quiropráctico profesional en Saltillo.
+              </span>
             </h1>
 
             {/* Dynamic Countdown Timer */}
@@ -242,7 +259,7 @@ export default function SaltilloPage() {
               style={{
                 display: "flex",
                 gap: "0.75rem",
-                marginBottom: "3rem",
+                marginBottom: "2.5rem",
                 flexWrap: "wrap",
                 justifyContent: "center",
               }}
@@ -293,21 +310,21 @@ export default function SaltilloPage() {
                 flexWrap: "wrap",
                 justifyContent: "center",
                 gap: "2.5rem",
-                color: "rgba(255,255,255,0.7)",
-                fontSize: "1.1rem",
+                color: "rgba(255,255,255,0.85)",
+                fontSize: "1.05rem",
                 fontFamily: "'Inter', sans-serif",
-                fontWeight: 400,
-                marginBottom: "3rem",
-                background: "rgba(2, 2, 2, 0.4)",
+                fontWeight: 500,
+                marginBottom: "2.5rem",
+                background: "rgba(2, 2, 2, 0.55)",
                 padding: "1rem 2rem",
                 borderRadius: "9999px",
-                border: "1px solid rgba(255,255,255,0.06)",
-                backdropFilter: "blur(6px)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                backdropFilter: "blur(8px)",
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <Calendar size={18} style={{ color: "#7c3aed" }} />
-                <span style={{ color: "#fff", fontWeight: 600 }}>Viernes 14 de Agosto</span>
+                <span>Viernes 14 de Agosto</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <Clock size={18} style={{ color: "#f5c518" }} />
@@ -315,30 +332,69 @@ export default function SaltilloPage() {
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <MapPin size={18} style={{ color: "#e63327" }} />
-                <span style={{ color: "#fff", fontWeight: 500 }}>Residencial Valle Real, Saltillo</span>
+                <span>Residencial Valle Real, Saltillo</span>
               </div>
             </div>
 
-            <div
+            {/* Hero Scroll CTA Button */}
+            <button
+              onClick={() => {
+                const element = document.getElementById("registro-formulario");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="btn-whatsapp"
               style={{
-                fontSize: "0.8rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.2em",
-                color: "rgba(255,255,255,0.4)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "0.5rem",
+                background: "linear-gradient(90deg, #ea580c 0%, #e63327 100%)",
+                border: "none",
+                padding: "1.1rem 2.5rem",
+                fontSize: "1rem",
+                fontWeight: 800,
+                borderRadius: "1.25rem",
+                cursor: "pointer",
+                boxShadow: "0 10px 30px rgba(230, 51, 39, 0.3)",
+                marginBottom: "2rem",
               }}
             >
-              <span>Desliza para agendar tu lugar</span>
-              <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
-                <ArrowRight size={16} style={{ transform: "rotate(90deg)", color: "rgba(255,255,255,0.4)" }} />
-              </motion.div>
-            </div>
+              Reservar mi lugar (Solo 30 cupos)
+            </button>
           </div>
         </section>
+
+        {/* Trust & Authority Bar */}
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto 4rem",
+            padding: "1.5rem 2rem",
+            background: "rgba(255, 255, 255, 0.02)",
+            border: "1px solid rgba(255, 255, 255, 0.05)",
+            borderRadius: "2rem",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "2rem",
+            textAlign: "center",
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+          {[
+            { value: "+49,000", label: "Pacientes Atendidos" },
+            { value: "10 Años", label: "Experiencia Clínica" },
+            { value: "SEP-Conocer", label: "Técnica Registrada" },
+            { value: "Especialista", label: "Columna & Deporte" },
+          ].map((stat, i) => (
+            <div key={i} style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+              <span style={{ fontSize: "1.75rem", fontWeight: 800, color: "var(--orange)", fontFamily: "'Space Grotesk', sans-serif", lineHeight: 1.1 }}>
+                {stat.value}
+              </span>
+              <span style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.45)", fontWeight: 500, fontFamily: "'Inter', sans-serif" }}>
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
 
         {/* Content Section */}
         <section
@@ -556,7 +612,39 @@ export default function SaltilloPage() {
 
             {/* Right Sticky Sidebar: Registration Form Box */}
             <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+              
+              {/* Benefits list card */}
               <div
+                style={{
+                  background: "rgba(255, 255, 255, 0.01)",
+                  border: "1px solid rgba(255, 255, 255, 0.05)",
+                  borderRadius: "2rem",
+                  padding: "2rem",
+                }}
+              >
+                <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "#fff", marginBottom: "1rem" }}>
+                  ¿Tienes alguno de estos dolores?
+                </h4>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.65)" }}>
+                  {[
+                    "Dolor lumbar",
+                    "Dolor cervical",
+                    "Ciática",
+                    "Contracturas",
+                    "Dolor por oficina",
+                    "Migrañas por tensión",
+                  ].map((symptom, idx) => (
+                    <div key={idx} style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                      <CheckCircle2 size={12} style={{ color: "var(--orange)", flexShrink: 0 }} />
+                      <span>{symptom}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Form Box */}
+              <div
+                id="registro-formulario"
                 style={{
                   background: "rgba(12, 12, 12, 0.9)",
                   border: "1px solid rgba(255, 255, 255, 0.08)",
@@ -591,7 +679,7 @@ export default function SaltilloPage() {
                   </div>
 
                   <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.75rem", fontWeight: 800, color: "#fff", marginBottom: "0.25rem", letterSpacing: "-0.01em" }}>
-                    Agenda tu Cita 🎟️
+                    Reserva tu lugar 🎟️
                   </h3>
 
                   {/* Scarcity Progress Bar */}
@@ -608,7 +696,7 @@ export default function SaltilloPage() {
                   </div>
 
                   <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.45)", fontFamily: "'Inter', sans-serif", lineHeight: 1.45 }}>
-                    Ingresa tus datos para registrar tu lugar. Se abrirá una conversación de WhatsApp para confirmar tu horario.
+                    Solo se atenderán 30 pacientes este viernes. Registra tu horario preferido abajo para asegurar tu lugar.
                   </p>
 
                   {/* Live Viewers Indicator */}
@@ -683,27 +771,36 @@ export default function SaltilloPage() {
                   {/* Pricing Box */}
                   <div
                     style={{
-                      background: "rgba(255,255,255,0.01)",
-                      border: "1px solid rgba(255,255,255,0.05)",
-                      borderRadius: "1.25rem",
-                      padding: "1.25rem",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
+                      background: "rgba(255,255,255,0.02)",
+                      border: "1px solid rgba(255,255,255,0.06)",
+                      borderRadius: "1.5rem",
+                      padding: "1.5rem",
                       marginTop: "0.5rem",
                     }}
                   >
-                    <div>
-                      <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.05em", display: "block" }}>
-                        Costo de la Sesión
-                      </span>
-                      <strong style={{ fontSize: "1rem", color: "#fff", fontFamily: "'Space Grotesk', sans-serif" }}>
-                        Ajuste Quiropráctico completo
-                      </strong>
+                    <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.75rem", fontWeight: 700 }}>
+                      Tu Sesión Especial Incluye:
                     </div>
-                    <span style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--yellow)", fontFamily: "'Space Grotesk', sans-serif" }}>
-                      $1,000
-                    </span>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem", marginBottom: "1rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.8)" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                        <CheckCircle2 size={13} style={{ color: "var(--yellow)" }} />
+                        <span>Valoración inicial detallada</span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                        <CheckCircle2 size={13} style={{ color: "var(--yellow)" }} />
+                        <span>Ajuste Quiropráctico Profesional</span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                        <CheckCircle2 size={13} style={{ color: "var(--yellow)" }} />
+                        <span>Recomendaciones y ejercicios de cuidado</span>
+                      </div>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "0.75rem" }}>
+                      <span style={{ fontSize: "0.85rem", color: "#fff", fontWeight: 700 }}>Todo por solo:</span>
+                      <span style={{ fontSize: "1.5rem", fontWeight: 900, color: "var(--yellow)", fontFamily: "'Space Grotesk', sans-serif" }}>
+                        $1,000 MXN
+                      </span>
+                    </div>
                   </div>
 
                   <button
@@ -719,7 +816,7 @@ export default function SaltilloPage() {
                       boxShadow: "0 10px 30px -10px rgba(37,211,102,0.4)",
                     }}
                   >
-                    {submitted ? "Redirigiendo..." : "Solicitar Cita en WhatsApp"}
+                    {submitted ? "Redirigiendo..." : "Quiero mi cita"}
                     <ArrowRight size={16} />
                   </button>
                 </form>
@@ -743,6 +840,43 @@ export default function SaltilloPage() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why choose All Anatomy block */}
+        <section
+          style={{
+            padding: "5rem 1.5rem",
+            background: "rgba(255, 255, 255, 0.01)",
+            borderTop: "1px solid rgba(255, 255, 255, 0.03)",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.03)",
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+          <div style={{ maxWidth: "1000px", margin: "0 auto", textAlign: "center" }}>
+            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "2rem", fontWeight: 800, color: "#fff", marginBottom: "3rem" }}>
+              ¿Por qué elegir <span style={{ color: "var(--orange)" }}>All Anatomy?</span>
+            </h2>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "2.5rem" }}>
+              {[
+                { title: "Atención 100% Personalizada", desc: "Ajuste enfocado en tu diagnóstico y dolor particular.", icon: "🤝" },
+                { title: "Sin Medicamentos ni Cirugías", desc: "Terapia manual no invasiva enfocada en la biomecánica.", icon: "🌱" },
+                { title: "Ajustes Clínicos Seguros", desc: "Procedimientos controlados realizados por profesional certificado.", icon: "🛡️" },
+                { title: "+49,000 Pacientes Satisfechos", desc: "Amplia trayectoria en alivio del dolor y terapia deportiva.", icon: "👥" },
+                { title: "Técnicas Certificadas SEP", desc: "Descompresión Axial con validez y registro oficial.", icon: "🎓" },
+              ].map((item, idx) => (
+                <div key={idx} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+                  <span style={{ fontSize: "2rem" }}>{item.icon}</span>
+                  <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1rem", fontWeight: 700, color: "#fff", marginTop: "0.5rem" }}>
+                    {item.title}
+                  </h4>
+                  <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.45)", fontFamily: "'Inter', sans-serif", lineHeight: 1.4 }}>
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -772,7 +906,7 @@ export default function SaltilloPage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))",
                 gap: "1.5rem",
               }}
             >
@@ -783,33 +917,76 @@ export default function SaltilloPage() {
                     background: "rgba(255, 255, 255, 0.02)",
                     border: "1px solid rgba(255, 255, 255, 0.05)",
                     borderRadius: "2rem",
-                    padding: "2rem",
+                    padding: "2.5rem 2rem",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
-                    minHeight: "240px",
+                    minHeight: "320px",
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
                   }}
                 >
                   <div>
-                    <div style={{ display: "flex", gap: "0.25rem", marginBottom: "1rem" }}>
+                    {/* Stars */}
+                    <div style={{ display: "flex", gap: "0.3rem", marginBottom: "1.25rem" }}>
                       {[...Array(t.rating)].map((_, i) => (
-                        <Star key={i} size={14} fill="var(--yellow)" style={{ color: "var(--yellow)" }} />
+                        <Star key={i} size={16} fill="var(--yellow)" style={{ color: "var(--yellow)" }} />
                       ))}
                     </div>
-                    <p style={{ fontSize: "0.92rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, fontFamily: "'Inter', sans-serif", fontStyle: "italic", marginBottom: "1.5rem" }}>
+
+                    {/* Pain and Result Details */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", marginBottom: "1.25rem", borderLeft: "2px solid var(--orange)", paddingLeft: "0.85rem" }}>
+                      <div style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.45)" }}>
+                        🤕 <strong>Dolor anterior:</strong> {t.pain}
+                      </div>
+                      <div style={{ fontSize: "0.8rem", color: "#ff8c3a" }}>
+                        ✨ <strong>Resultado:</strong> {t.result}
+                      </div>
+                    </div>
+
+                    <p style={{ fontSize: "0.92rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, fontFamily: "'Inter', sans-serif", fontStyle: "italic", marginBottom: "1.5rem" }}>
                       "{t.quote}"
                     </p>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                  
+                  {/* User Profile */}
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1rem" }}>
+                    <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "var(--gradient-brand)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, color: "#fff", fontSize: "0.9rem" }}>
+                      {t.name.split(" ")[0][0]}
+                    </div>
                     <div>
                       <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: "#fff", fontSize: "1rem" }}>{t.name}</h4>
-                      <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.35)", fontFamily: "'Inter', sans-serif", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                        {t.role}
+                      <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.4)", fontFamily: "'Inter', sans-serif" }}>
+                        {t.role} · {t.city} ({t.age})
                       </p>
                     </div>
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* CTA Repeater at bottom of Testimonials */}
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "3.5rem" }}>
+              <button
+                onClick={() => {
+                  const element = document.getElementById("registro-formulario");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+                className="btn-whatsapp"
+                style={{
+                  background: "linear-gradient(90deg, #ea580c 0%, #e63327 100%)",
+                  border: "none",
+                  padding: "1rem 2.5rem",
+                  fontSize: "0.95rem",
+                  fontWeight: 800,
+                  borderRadius: "1.25rem",
+                  cursor: "pointer",
+                  boxShadow: "0 10px 25px rgba(230, 51, 39, 0.25)",
+                }}
+              >
+                Quiero agendar mi cita →
+              </button>
             </div>
           </div>
         </section>
@@ -856,6 +1033,26 @@ export default function SaltilloPage() {
                   q: "¿Qué sucede después de llenar el formulario?",
                   a: "Al dar clic en 'Solicitar Cita en WhatsApp', se abrirá un chat prellenado con nuestros asesores para confirmar tu horario disponible y facilitarte las indicaciones detalladas de llegada.",
                 },
+                {
+                  q: "¿Duele el ajuste?",
+                  a: "No, el ajuste quiropráctico no es doloroso. Es posible sentir una liberación de presión o un sonido de chasquido ('crunch'), el cual es simplemente gas liberándose de las articulaciones, seguido de un alivio inmediato.",
+                },
+                {
+                  q: "¿Cuánto dura la sesión?",
+                  a: "La sesión dura aproximadamente de 30 a 40 minutos, ya que incluye la valoración inicial detallada del especialista, pruebas físicas, ortopédicas y el ajuste quiropráctico completo.",
+                },
+                {
+                  q: "¿Qué ropa debo llevar?",
+                  a: "Te recomendamos asistir con ropa cómoda y flexible (deportiva o pants). Evita llevar mezclilla gruesa, cinturones rígidos o vestidos.",
+                },
+                {
+                  q: "¿Desde qué edad pueden atenderse?",
+                  a: "Atendemos a pacientes desde niños hasta adultos mayores de manera completamente segura. El tratamiento se adapta de forma precisa según la edad, peso y necesidades de cada persona.",
+                },
+                {
+                  q: "¿Aceptan tarjeta?",
+                  a: "Para esta fecha especial en Saltillo, únicamente se aceptarán pagos en efectivo al momento de tu recepción para agilizar el registro y asignación de consultorio.",
+                },
               ].map((faq, idx) => (
                 <div
                   key={idx}
@@ -875,9 +1072,75 @@ export default function SaltilloPage() {
                 </div>
               ))}
             </div>
+
+            {/* CTA Repeater at bottom of FAQ */}
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "3.5rem" }}>
+              <button
+                onClick={() => {
+                  const element = document.getElementById("registro-formulario");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+                className="btn-whatsapp"
+                style={{
+                  background: "linear-gradient(90deg, #ea580c 0%, #e63327 100%)",
+                  border: "none",
+                  padding: "1rem 2.5rem",
+                  fontSize: "0.95rem",
+                  fontWeight: 800,
+                  borderRadius: "1.25rem",
+                  cursor: "pointer",
+                  boxShadow: "0 10px 25px rgba(230, 51, 39, 0.25)",
+                }}
+              >
+                Reserva tu lugar ahora →
+              </button>
+            </div>
           </div>
         </section>
       </main>
+
+      {/* Mobile Sticky Footer Bar */}
+      <div
+        className="show-only-on-mobile"
+        style={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 999,
+          background: "rgba(10, 10, 10, 0.95)",
+          backdropFilter: "blur(12px)",
+          borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+          padding: "1rem 1.5rem",
+          boxShadow: "0 -10px 30px rgba(0,0,0,0.6)",
+        }}
+      >
+        <button
+          onClick={() => {
+            const element = document.getElementById("registro-formulario");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+          className="btn-whatsapp"
+          style={{
+            width: "100%",
+            background: "linear-gradient(90deg, #ea580c 0%, #e63327 100%)",
+            border: "none",
+            padding: "1.1rem 2rem",
+            fontSize: "0.95rem",
+            fontWeight: 800,
+            borderRadius: "1.25rem",
+            cursor: "pointer",
+            justifyContent: "center",
+            boxShadow: "0 4px 15px rgba(230, 51, 39, 0.2)",
+          }}
+        >
+          🎟️ Reservar mi lugar (Últimos 8 cupos)
+        </button>
+      </div>
 
       {/* Lightbox Modal */}
       <AnimatePresence>
