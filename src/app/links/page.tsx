@@ -120,36 +120,18 @@ export default function LinksPage() {
       >
         {/* Logo/Header */}
         <Link href="/" style={{ marginBottom: "2.5rem", display: "inline-block" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <span style={{ fontSize: "1.8rem", lineHeight: 1 }}>🦴</span>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", lineHeight: 1 }}>
-              <span
-                style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontWeight: 900,
-                  fontSize: "1.3rem",
-                  color: "#fff",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                }}
-              >
-                All Anatomy
-              </span>
-              <span
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "0.45rem",
-                  color: "rgba(255,255,255,0.45)",
-                  fontWeight: 700,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  marginTop: "0.1rem",
-                }}
-              >
-                Chiropractic & Alternative Therapy
-              </span>
-            </div>
-          </div>
+          <Image
+            src="/logo-white-v2.png"
+            alt="All Anatomy"
+            width={240}
+            height={60}
+            style={{
+              objectFit: "contain",
+              height: "50px",
+              width: "auto",
+            }}
+            priority
+          />
         </Link>
 
         {/* Clinic bio */}

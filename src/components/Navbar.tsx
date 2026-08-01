@@ -82,46 +82,20 @@ export default function Navbar() {
             <motion.div
               animate={{ scale: scrolled ? 0.95 : 1 }}
               transition={{ duration: 0.3 }}
-              style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}
             >
-              <span
+              <Image
+                src="/logo-white-v2.png"
+                alt="All Anatomy"
+                width={220}
+                height={55}
                 style={{
-                  fontSize: scrolled ? "1.6rem" : "2rem",
-                  transition: "font-size 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                  lineHeight: 1,
+                  objectFit: "contain",
+                  height: scrolled ? "36px" : "44px",
+                  width: "auto",
+                  transition: "height 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
-              >
-                🦴
-              </span>
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", lineHeight: 1 }}>
-                <span
-                  style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontWeight: 900,
-                    fontSize: scrolled ? "1.15rem" : "1.35rem",
-                    color: "#fff",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    transition: "font-size 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                  }}
-                >
-                  All Anatomy
-                </span>
-                <span
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: scrolled ? "0.42rem" : "0.5rem",
-                    color: "rgba(255,255,255,0.45)",
-                    fontWeight: 700,
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    marginTop: scrolled ? "0.1rem" : "0.15rem",
-                    transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                  }}
-                >
-                  Chiropractic & Alternative Therapy
-                </span>
-              </div>
+                priority
+              />
             </motion.div>
           </Link>
 
