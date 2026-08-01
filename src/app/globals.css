@@ -282,10 +282,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--black); }
-::-webkit-scrollbar-thumb { background: #222; border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: var(--grad-mid); }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--grad-start) 0%, var(--grad-mid) 100%);
+  border-radius: 9999px;
+  border: 1px solid var(--black);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #905cf2 0%, #ff6e24 100%);
+}
 
 /* Selection */
 ::selection { background: rgba(234, 88, 12, 0.35); color: var(--white); }
