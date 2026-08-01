@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Calendar, MapPin, DollarSign, Users, CheckCircle2, ArrowRight, ShieldAlert, Sparkles, Star, Trophy, Clock } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, MapPin, DollarSign, Users, CheckCircle2, ArrowRight, ShieldAlert, Sparkles, Star, Trophy, Clock, X } from "lucide-react";
 
 interface Testimonial {
   name: string;
@@ -51,6 +51,7 @@ export default function SaltilloPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [selectedImg, setSelectedImg] = useState<string | null>(null);
 
   useEffect(() => {
     // Target event: August 14, 2026 at 9:00 AM
@@ -394,6 +395,7 @@ export default function SaltilloPage() {
                   </h2>
                 </div>
                 <div
+                  onClick={() => setSelectedImg("/flyer-saltillo-real.jpg")}
                   style={{
                     position: "relative",
                     borderRadius: "2rem",
@@ -402,6 +404,7 @@ export default function SaltilloPage() {
                     aspectRatio: "1.25",
                     width: "100%",
                     background: "rgba(10,10,10,0.5)",
+                    cursor: "pointer",
                   }}
                 >
                   <Image
@@ -411,6 +414,29 @@ export default function SaltilloPage() {
                     style={{ objectFit: "cover", objectPosition: "center" }}
                     quality={95}
                   />
+                  {/* Hover indicator */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "rgba(0, 0, 0, 0.4)",
+                      opacity: 0,
+                      transition: "opacity 0.25s",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.opacity = "1";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.opacity = "0";
+                    }}
+                  >
+                    <span style={{ color: "#fff", fontSize: "0.85rem", fontWeight: 600, padding: "0.5rem 1rem", background: "rgba(0,0,0,0.6)", borderRadius: "9999px" }}>
+                      🔎 Ver en Grande
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -481,6 +507,7 @@ export default function SaltilloPage() {
                   {galleryImages.map((img, i) => (
                     <div
                       key={i}
+                      onClick={() => setSelectedImg(img.src)}
                       style={{
                         position: "relative",
                         aspectRatio: "1.33",
@@ -488,6 +515,7 @@ export default function SaltilloPage() {
                         overflow: "hidden",
                         border: "1px solid rgba(255,255,255,0.05)",
                         background: "rgba(255,255,255,0.01)",
+                        cursor: "pointer",
                       }}
                     >
                       <Image
@@ -497,6 +525,29 @@ export default function SaltilloPage() {
                         style={{ objectFit: "cover" }}
                         quality={80}
                       />
+                      {/* Hover indicator */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          background: "rgba(0, 0, 0, 0.4)",
+                          opacity: 0,
+                          transition: "opacity 0.25s",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.opacity = "1";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.opacity = "0";
+                        }}
+                      >
+                        <span style={{ color: "#fff", fontSize: "0.7rem", fontWeight: 600, padding: "0.35rem 0.75rem", background: "rgba(0,0,0,0.6)", borderRadius: "9999px" }}>
+                          🔎 Ver
+                        </span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -762,7 +813,146 @@ export default function SaltilloPage() {
             </div>
           </div>
         </section>
+
+        {/* Saltillo Specific FAQs */}
+        <section
+          style={{
+            padding: "6rem 1.5rem",
+            background: "#020202",
+            borderTop: "1px solid rgba(255,255,255,0.03)",
+            position: "relative",
+          }}
+        >
+          <div style={{ maxWidth: "800px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+            <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+              <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 800, color: "#fff", marginBottom: "1rem" }}>
+                Preguntas{" "}
+                <span style={{ color: "var(--orange)", fontStyle: "italic", fontWeight: 400 }}>Frecuentes.</span>
+              </h2>
+              <p style={{ fontSize: "0.95rem", color: "rgba(255,255,255,0.45)", fontFamily: "'Inter', sans-serif" }}>
+                Todo lo que necesitas saber sobre la fecha especial de All Anatomy en Saltillo.
+              </p>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {[
+                {
+                  q: "¿Cuándo y dónde será el evento?",
+                  a: "Se llevará a cabo el Viernes 14 de Agosto, a partir de las 9:00 AM, en Residencial Valle Real en Saltillo, Coahuila. La ubicación exacta y detalles de acceso se te enviarán por WhatsApp tras registrar tu solicitud.",
+                },
+                {
+                  q: "¿Cuál es el costo y cómo se realiza el pago?",
+                  a: "El costo es de $1,000 MXN por una sesión completa de ajuste quiropráctico. El pago se realiza únicamente en efectivo en el lugar del evento durante tu recepción.",
+                },
+                {
+                  q: "¿Tienen cupo limitado?",
+                  a: "Sí, es cupo estrictamente limitado de 30 a 50 citas para garantizar una atención personalizada y de la más alta calidad. Recomendamos agendar lo antes posible para asegurar tu horario.",
+                },
+                {
+                  q: "¿Quién realizará los ajustes?",
+                  a: "Todos los ajustes clínicos y terapias de descompresión serán realizados personalmente por el quiropráctico Edgar Delgado, especialista certificado con más de 49,000 ajustes espinales realizados.",
+                },
+                {
+                  q: "¿Qué sucede después de llenar el formulario?",
+                  a: "Al dar clic en 'Solicitar Cita en WhatsApp', se abrirá un chat prellenado con nuestros asesores para confirmar tu horario disponible y facilitarte las indicaciones detalladas de llegada.",
+                },
+              ].map((faq, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    background: "rgba(255, 255, 255, 0.01)",
+                    border: "1px solid rgba(255, 255, 255, 0.04)",
+                    borderRadius: "1.5rem",
+                    padding: "1.5rem 2rem",
+                  }}
+                >
+                  <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.1rem", fontWeight: 700, color: "#fff", marginBottom: "0.5rem" }}>
+                    {faq.q}
+                  </h4>
+                  <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+                    {faq.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImg !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImg(null)}
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 9999,
+              background: "rgba(5, 5, 5, 0.95)",
+              backdropFilter: "blur(12px)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "2rem",
+            }}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedImg(null)}
+              style={{
+                position: "absolute",
+                top: "2rem",
+                right: "2rem",
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "50%",
+                width: "48px",
+                height: "48px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                color: "#fff",
+                transition: "all 0.25s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+              }}
+            >
+              <X size={20} />
+            </button>
+
+            {/* Main image container */}
+            <motion.div
+              initial={{ scale: 0.95, y: 15 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 15 }}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                position: "relative",
+                width: "90%",
+                maxWidth: "750px",
+                height: "80vh",
+              }}
+            >
+              <Image
+                src={selectedImg}
+                alt="Imagen ampliada"
+                fill
+                style={{ objectFit: "contain" }}
+                quality={95}
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <Footer />
     </>
   );
