@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -50,6 +50,29 @@ export default function SaltilloPage() {
     symptoms: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    // Target event: August 14, 2026 at 9:00 AM
+    const targetDate = new Date("2026-08-14T09:00:00").getTime();
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        setTimeLeft({ days, hours, minutes, seconds });
+      }
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,40 +107,101 @@ export default function SaltilloPage() {
           }}
         />
 
+        {/* Urgency Announcement Bar */}
+        <div
+          style={{
+            background: "linear-gradient(90deg, #ea580c 0%, #e63327 100%)",
+            color: "#fff",
+            padding: "0.85rem 1rem",
+            textAlign: "center",
+            fontSize: "clamp(0.72rem, 1.5vw, 0.85rem)",
+            fontWeight: 700,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            fontFamily: "'Space Grotesk', sans-serif",
+            position: "relative",
+            zIndex: 3,
+            boxShadow: "0 4px 20px rgba(230, 51, 39, 0.25)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.6rem",
+          }}
+        >
+          <ShieldAlert size={15} style={{ animation: "pulse 1.5s infinite" }} />
+          <span>⚠️ Cupo Especial: ¡Últimos 8 lugares disponibles para Saltillo! 84% de reservas completadas.</span>
+        </div>
+
         {/* Hero Section */}
         <section
           style={{
-            minHeight: "85vh",
+            minHeight: "90vh",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             position: "relative",
             zIndex: 1,
-            padding: "4rem 1.5rem",
+            padding: "6rem 1.5rem",
             textAlign: "center",
+            overflow: "hidden",
           }}
         >
-          <div style={{ maxWidth: "950px", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          {/* Stunning Background Image */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 0,
+            }}
+          >
+            <Image
+              src="/edgar/edgar-quiropractica-real.jpg"
+              alt="Edgar Delgado Ajuste Quiropráctico en Saltillo"
+              fill
+              priority
+              style={{ objectFit: "cover", objectPosition: "center 30%" }}
+              quality={90}
+            />
+            {/* Ambient Overlays */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(180deg, rgba(2,2,2,0.85) 0%, rgba(2,2,2,0.55) 40%, rgba(2,2,2,0.88) 75%, #020202 100%)",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "radial-gradient(circle at center, transparent 30%, rgba(2,2,2,0.9) 90%)",
+              }}
+            />
+          </div>
+
+          <div style={{ maxWidth: "950px", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 2 }}>
             <div
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
                 padding: "0.5rem 1.25rem",
-                background: "rgba(234,88,12,0.1)",
-                border: "1px solid rgba(234,88,12,0.25)",
+                background: "rgba(234,88,12,0.18)",
+                border: "1px solid rgba(234,88,12,0.4)",
                 borderRadius: "9999px",
-                color: "var(--orange)",
+                color: "#ff8c3a",
                 fontSize: "0.75rem",
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.3em",
-                marginBottom: "2.5rem",
+                marginBottom: "2rem",
                 fontFamily: "'Inter', sans-serif",
+                backdropFilter: "blur(8px)",
+                boxShadow: "0 0 20px rgba(234,88,12,0.15)",
               }}
             >
-              <Sparkles size={13} className="animate-pulse" />
+              <Sparkles size={13} style={{ color: "#ff8c3a" }} />
               Fecha Especial en Coahuila
             </div>
 
@@ -130,12 +214,62 @@ export default function SaltilloPage() {
                 lineHeight: 0.95,
                 letterSpacing: "-0.04em",
                 marginBottom: "2.5rem",
+                textShadow: "0 10px 40px rgba(0,0,0,0.9)",
               }}
             >
               <span style={{ display: "block" }}>El Mejor Ajuste</span>
               <span style={{ display: "block", background: "var(--gradient-brand)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Quiropráctico</span>
               <span style={{ display: "block" }}>llega a Saltillo</span>
             </h1>
+
+            {/* Dynamic Countdown Timer */}
+            <div
+              style={{
+                display: "flex",
+                gap: "0.75rem",
+                marginBottom: "3rem",
+                flexWrap: "wrap",
+                justifyContent: "center",
+              }}
+            >
+              {[
+                { value: timeLeft.days, label: "Días" },
+                { value: timeLeft.hours, label: "Horas" },
+                { value: timeLeft.minutes, label: "Minutos" },
+                { value: timeLeft.seconds, label: "Segundos" },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    background: "rgba(12, 12, 12, 0.8)",
+                    backdropFilter: "blur(12px)",
+                    border: "1px solid rgba(255, 255, 255, 0.08)",
+                    borderRadius: "1rem",
+                    padding: "0.8rem 1.2rem",
+                    minWidth: "75px",
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontSize: "1.75rem",
+                      fontWeight: 800,
+                      color: "var(--yellow)",
+                      lineHeight: 1,
+                    }}
+                  >
+                    {String(item.value).padStart(2, "0")}
+                  </span>
+                  <span style={{ fontSize: "0.6rem", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", fontWeight: 600, letterSpacing: "0.06em", marginTop: "0.3rem" }}>
+                    {item.label}
+                  </span>
+                </div>
+              ))}
+            </div>
 
             {/* Event Specs row */}
             <div
@@ -144,11 +278,16 @@ export default function SaltilloPage() {
                 flexWrap: "wrap",
                 justifyContent: "center",
                 gap: "2.5rem",
-                color: "rgba(255,255,255,0.45)",
+                color: "rgba(255,255,255,0.7)",
                 fontSize: "1.1rem",
                 fontFamily: "'Inter', sans-serif",
-                fontWeight: 300,
+                fontWeight: 400,
                 marginBottom: "3rem",
+                background: "rgba(2, 2, 2, 0.4)",
+                padding: "1rem 2rem",
+                borderRadius: "9999px",
+                border: "1px solid rgba(255,255,255,0.06)",
+                backdropFilter: "blur(6px)",
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
@@ -161,7 +300,7 @@ export default function SaltilloPage() {
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <MapPin size={18} style={{ color: "#e63327" }} />
-                <span>Residencial Valle Real, Saltillo</span>
+                <span style={{ color: "#fff", fontWeight: 500 }}>Residencial Valle Real, Saltillo</span>
               </div>
             </div>
 
@@ -171,7 +310,7 @@ export default function SaltilloPage() {
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.2em",
-                color: "rgba(255,255,255,0.3)",
+                color: "rgba(255,255,255,0.4)",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -180,7 +319,7 @@ export default function SaltilloPage() {
             >
               <span>Desliza para agendar tu lugar</span>
               <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
-                <ArrowRight size={16} style={{ transform: "rotate(90deg)", color: "rgba(255,255,255,0.3)" }} />
+                <ArrowRight size={16} style={{ transform: "rotate(90deg)", color: "rgba(255,255,255,0.4)" }} />
               </motion.div>
             </div>
           </div>
@@ -383,15 +522,35 @@ export default function SaltilloPage() {
                     }}
                   >
                     <ShieldAlert size={12} />
-                    Cupo de 30 a 50 citas
+                    Alta Demanda — Cupo Limitado
                   </div>
 
                   <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "1.75rem", fontWeight: 800, color: "#fff", marginBottom: "0.25rem", letterSpacing: "-0.01em" }}>
                     Agenda tu Cita 🎟️
                   </h3>
-                  <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.45)", fontFamily: "'Inter', sans-serif" }}>
-                    Secuencia del servicio de ajuste clínico
+
+                  {/* Scarcity Progress Bar */}
+                  <div style={{ margin: "1rem 0 1.25rem" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.75rem", color: "rgba(255,255,255,0.65)", marginBottom: "0.4rem", fontFamily: "'Inter', sans-serif" }}>
+                      <span>Reservado: <strong>84%</strong></span>
+                      <span style={{ color: "#ff5a4e", fontWeight: 600 }}>🔥 ¡Quedan 8 lugares!</span>
+                    </div>
+                    <div style={{ width: "100%", height: "6px", background: "rgba(255,255,255,0.08)", borderRadius: "3px", overflow: "hidden" }}>
+                      <div
+                        style={{ width: "84%", height: "100%", background: "linear-gradient(90deg, #ea580c 0%, #e63327 100%)", borderRadius: "3px" }}
+                      />
+                    </div>
+                  </div>
+
+                  <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.45)", fontFamily: "'Inter', sans-serif", lineHeight: 1.45 }}>
+                    Ingresa tus datos para registrar tu lugar. Se abrirá una conversación de WhatsApp para confirmar tu horario.
                   </p>
+
+                  {/* Live Viewers Indicator */}
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.4rem", fontSize: "0.72rem", color: "#ffbe1a", fontFamily: "'Inter', sans-serif", marginTop: "1rem" }}>
+                    <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#ffbe1a", animation: "pulse 1.5s infinite", display: "inline-block" }} />
+                    <span>9 personas viendo esta página ahora</span>
+                  </div>
                 </div>
 
                 {/* Form fields */}
