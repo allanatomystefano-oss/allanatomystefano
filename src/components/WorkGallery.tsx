@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ZoomIn, Eye } from "lucide-react";
 
 // List of cropped real images of the clinic/Edgar Delgado's work, excluding white-bordered images (10-16)
-const activeIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 17];
+const activeIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 19, 20, 21, 22, 23, 24];
 const galleryImages = activeIds.map((id) => ({
   id,
   src: `/trabajo/trabajo-${id}.jpg`,
