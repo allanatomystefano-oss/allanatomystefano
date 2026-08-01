@@ -68,7 +68,7 @@ export default function Hero() {
               position: "absolute",
               inset: 0,
               background:
-                "linear-gradient(180deg, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.2) 40%, rgba(5,5,5,0.7) 75%, rgba(5,5,5,0.98) 100%)",
+                "linear-gradient(180deg, rgba(5,5,5,0.15) 0%, rgba(5,5,5,0.4) 55%, rgba(5,5,5,0.85) 85%, #050505 100%)",
             }}
           />
           {/* Left-side fade for text zone */}
