@@ -54,7 +54,7 @@ export default function AboutPreview() {
             }}
           >
             <Image
-              src="/clinic.png"
+              src="/clinic-real.jpg"
               alt="All Anatomy — Clínica de quiropráctica en Monterrey"
               fill
               style={{ objectFit: "cover", objectPosition: "center" }}

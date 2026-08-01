@@ -171,7 +171,7 @@ export default function NosotrosPage() {
               }}
             >
               <Image
-                src="/clinic.png"
+                src="/clinic-real.jpg"
                 alt="All Anatomy Monterrey"
                 fill
                 style={{ objectFit: "cover" }}
