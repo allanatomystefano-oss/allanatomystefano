@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: {
@@ -62,6 +63,7 @@ export default function RootLayout({
       <body>
         {children}
         <WhatsAppFloat />
+        <SpeedInsights />
       </body>
     </html>
   );
