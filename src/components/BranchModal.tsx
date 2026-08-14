@@ -1,13 +1,42 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X, MessageCircle, MapPin, Calendar, ExternalLink } from "lucide-react";
+import { X, MessageCircle, MapPin, Calendar, ExternalLink, Sparkles } from "lucide-react";
 import { CONTACT_INFO } from "@/constants/contact";
 
 interface BranchModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+const CONTRY_PHONE = "528134173857";
+
+const outOfCityCities = [
+  {
+    id: "saltillo",
+    name: "Saltillo",
+    details: "Coahuila — Fecha especial",
+    icon: "🏙️",
+    accent: "#f59e0b",
+    whatsappText: "Hola%20All%20Anatomy%21%20Me%20gustar%C3%ADa%20agendar%20mi%20cita%20para%20el%20Ajuste%20Quiropr%C3%A1ctico%20en%20Saltillo.",
+  },
+  {
+    id: "cadereyta",
+    name: "Cadereyta",
+    details: "Nuevo León — Fecha especial",
+    icon: "📍",
+    accent: "#7c3aed",
+    whatsappText: "Hola%20All%20Anatomy%21%20Me%20gustar%C3%ADa%20agendar%20mi%20cita%20para%20el%20Ajuste%20Quiropr%C3%A1ctico%20en%20Cadereyta.",
+  },
+  {
+    id: "guadalajara",
+    name: "Guadalajara",
+    details: "Jalisco — Fecha especial",
+    icon: "🌆",
+    accent: "#0ea5e9",
+    whatsappText: "Hola%20All%20Anatomy%21%20Me%20gustar%C3%ADa%20agendar%20mi%20cita%20para%20el%20Ajuste%20Quiropr%C3%A1ctico%20en%20Guadalajara.",
+  },
+];
 
 export default function BranchModal({ isOpen, onClose }: BranchModalProps) {
   const branches = [
@@ -57,7 +86,9 @@ export default function BranchModal({ isOpen, onClose }: BranchModalProps) {
             transition={{ type: "spring", stiffness: 350, damping: 28 }}
             style={{
               width: "100%",
-              maxWidth: "560px",
+              maxWidth: "580px",
+              maxHeight: "90vh",
+              overflowY: "auto",
               background: "rgba(15, 15, 15, 0.96)",
               border: "1px solid rgba(255, 255, 255, 0.08)",
               borderRadius: "2.25rem",
@@ -110,7 +141,7 @@ export default function BranchModal({ isOpen, onClose }: BranchModalProps) {
                   letterSpacing: "-0.01em",
                 }}
               >
-                ¿Cómo deseas agendar?
+                ¿Dónde quieres agendar?
               </h3>
               <p
                 style={{
@@ -120,163 +151,313 @@ export default function BranchModal({ isOpen, onClose }: BranchModalProps) {
                   lineHeight: 1.4,
                 }}
               >
-                Elige tu sucursal y el método de reserva que prefieras.
+                Selecciona tu ciudad o sucursal.
               </p>
             </div>
 
-            {/* Branches list */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-              {branches.map((branch) => (
-                <div
-                  key={branch.id}
+            {/* ── Sucursales Monterrey ── */}
+            <div style={{ marginBottom: "1.75rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.6rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                <div style={{ height: "1px", flex: 1, background: "rgba(255,255,255,0.06)" }} />
+                <span
                   style={{
-                    padding: "1.5rem",
-                    borderRadius: "1.5rem",
-                    background: "rgba(255, 255, 255, 0.02)",
-                    border: "1px solid rgba(255, 255, 255, 0.05)",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "1.25rem",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.3)",
+                    fontFamily: "'Inter', sans-serif",
+                    whiteSpace: "nowrap",
                   }}
                 >
-                  {/* Branch header inside card */}
-                  <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                  Sucursales Monterrey
+                </span>
+                <div style={{ height: "1px", flex: 1, background: "rgba(255,255,255,0.06)" }} />
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                {branches.map((branch) => (
+                  <div
+                    key={branch.id}
+                    style={{
+                      padding: "1.35rem",
+                      borderRadius: "1.5rem",
+                      background: "rgba(255, 255, 255, 0.02)",
+                      border: "1px solid rgba(255, 255, 255, 0.05)",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1rem",
+                    }}
+                  >
+                    {/* Branch header */}
+                    <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                      <div
+                        style={{
+                          width: "42px",
+                          height: "42px",
+                          borderRadius: "10px",
+                          background: `${branch.accent}15`,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: branch.accent,
+                          flexShrink: 0,
+                        }}
+                      >
+                        <MapPin size={20} />
+                      </div>
+                      <div style={{ textAlign: "left" }}>
+                        <div
+                          style={{
+                            fontFamily: "'Space Grotesk', sans-serif",
+                            fontWeight: 700,
+                            fontSize: "1.05rem",
+                            color: "#fff",
+                          }}
+                        >
+                          {branch.name}
+                        </div>
+                        <div
+                          style={{
+                            fontSize: "0.75rem",
+                            color: "rgba(255,255,255,0.4)",
+                            fontFamily: "'Inter', sans-serif",
+                          }}
+                        >
+                          {branch.details}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action buttons */}
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem" }}>
+                      <a
+                        href={branch.whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={onClose}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "0.5rem",
+                          padding: "0.8rem 1rem",
+                          borderRadius: "1rem",
+                          background: "rgba(37, 211, 102, 0.08)",
+                          border: "1px solid rgba(37, 211, 102, 0.2)",
+                          color: "#25D366",
+                          fontFamily: "'Inter', sans-serif",
+                          fontSize: "0.8rem",
+                          fontWeight: 600,
+                          textDecoration: "none",
+                          transition: "all 0.25s",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "rgba(37, 211, 102, 0.15)";
+                          e.currentTarget.style.borderColor = "rgba(37, 211, 102, 0.4)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "rgba(37, 211, 102, 0.08)";
+                          e.currentTarget.style.borderColor = "rgba(37, 211, 102, 0.2)";
+                        }}
+                      >
+                        <MessageCircle size={14} />
+                        Por WhatsApp
+                      </a>
+                      <a
+                        href={branch.agendaProUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={onClose}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "0.5rem",
+                          padding: "0.8rem 1rem",
+                          borderRadius: "1rem",
+                          background: `${branch.accent}15`,
+                          border: `1px solid ${branch.accent}30`,
+                          color: "#fff",
+                          fontFamily: "'Inter', sans-serif",
+                          fontSize: "0.8rem",
+                          fontWeight: 600,
+                          textDecoration: "none",
+                          transition: "all 0.25s",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = `${branch.accent}25`;
+                          e.currentTarget.style.borderColor = `${branch.accent}50`;
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = `${branch.accent}15`;
+                          e.currentTarget.style.borderColor = `${branch.accent}30`;
+                        }}
+                      >
+                        <Calendar size={14} style={{ color: branch.accent }} />
+                        Agendar Online
+                        <ExternalLink size={10} style={{ opacity: 0.5 }} />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Fechas Especiales (otras ciudades) ── */}
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.6rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                <div style={{ height: "1px", flex: 1, background: "rgba(255,255,255,0.06)" }} />
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.35rem",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.3)",
+                    fontFamily: "'Inter', sans-serif",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  <Sparkles size={10} style={{ color: "#f59e0b" }} />
+                  Fechas Especiales
+                </span>
+                <div style={{ height: "1px", flex: 1, background: "rgba(255,255,255,0.06)" }} />
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
+                {outOfCityCities.map((city) => (
+                  <a
+                    key={city.id}
+                    href={`https://wa.me/${CONTRY_PHONE}?text=${city.whatsappText}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={onClose}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1rem",
+                      padding: "1.25rem 1.35rem",
+                      borderRadius: "1.5rem",
+                      background: `rgba(255,255,255,0.02)`,
+                      border: `1px solid ${city.accent}25`,
+                      textDecoration: "none",
+                      transition: "all 0.25s",
+                      cursor: "pointer",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = `${city.accent}0d`;
+                      e.currentTarget.style.borderColor = `${city.accent}50`;
+                      e.currentTarget.style.transform = "translateX(4px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "rgba(255,255,255,0.02)";
+                      e.currentTarget.style.borderColor = `${city.accent}25`;
+                      e.currentTarget.style.transform = "translateX(0)";
+                    }}
+                  >
+                    {/* City icon */}
                     <div
                       style={{
-                        width: "42px",
-                        height: "42px",
-                        borderRadius: "10px",
-                        background: `${branch.accent}15`,
+                        width: "46px",
+                        height: "46px",
+                        borderRadius: "12px",
+                        background: `${city.accent}15`,
+                        border: `1px solid ${city.accent}25`,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        color: branch.accent,
+                        fontSize: "1.35rem",
                         flexShrink: 0,
                       }}
                     >
-                      <MapPin size={20} />
+                      {city.icon}
                     </div>
-                    <div style={{ textAlign: "left" }}>
+
+                    {/* City info */}
+                    <div style={{ flex: 1, textAlign: "left" }}>
                       <div
                         style={{
                           fontFamily: "'Space Grotesk', sans-serif",
                           fontWeight: 700,
-                          fontSize: "1.15rem",
+                          fontSize: "1.1rem",
                           color: "#fff",
+                          lineHeight: 1.2,
                         }}
                       >
-                        {branch.name}
+                        {city.name}
                       </div>
                       <div
                         style={{
-                          fontSize: "0.78rem",
-                          color: "rgba(255,255,255,0.45)",
+                          fontSize: "0.72rem",
+                          color: "rgba(255,255,255,0.4)",
                           fontFamily: "'Inter', sans-serif",
+                          marginTop: "0.15rem",
                         }}
                       >
-                        {branch.details}
+                        {city.details}
                       </div>
                     </div>
-                  </div>
 
-                  {/* Dual Action buttons inside the card */}
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
-                    {/* WhatsApp button */}
-                    <a
-                      href={branch.whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={onClose}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "0.5rem",
-                        padding: "0.85rem 1rem",
-                        borderRadius: "1rem",
-                        background: "rgba(37, 211, 102, 0.08)",
-                        border: "1px solid rgba(37, 211, 102, 0.2)",
-                        color: "#25D366",
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: "0.82rem",
-                        fontWeight: 600,
-                        textDecoration: "none",
-                        transition: "all 0.25s",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "rgba(37, 211, 102, 0.15)";
-                        e.currentTarget.style.borderColor = "rgba(37, 211, 102, 0.4)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = "rgba(37, 211, 102, 0.08)";
-                        e.currentTarget.style.borderColor = "rgba(37, 211, 102, 0.2)";
-                      }}
-                    >
-                      <MessageCircle size={15} />
-                      Por WhatsApp
-                    </a>
-
-                    {/* AgendaPro online booking button */}
-                    <a
-                      href={branch.agendaProUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={onClose}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "0.5rem",
-                        padding: "0.85rem 1rem",
-                        borderRadius: "1rem",
-                        background: `${branch.accent}15`,
-                        border: `1px solid ${branch.accent}30`,
-                        color: "#fff",
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: "0.82rem",
-                        fontWeight: 600,
-                        textDecoration: "none",
-                        transition: "all 0.25s",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = `${branch.accent}25`;
-                        e.currentTarget.style.borderColor = `${branch.accent}50`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = `${branch.accent}15`;
-                        e.currentTarget.style.borderColor = `${branch.accent}30`;
-                      }}
-                    >
-                      <Calendar size={15} style={{ color: branch.accent }} />
-                      Agendar Online
-                      <ExternalLink size={10} style={{ opacity: 0.5 }} />
-                    </a>
-                  </div>
-
-                  {/* Note for Contry: handles out-of-city bookings */}
-                  {branch.id === "contry" && (
+                    {/* WhatsApp badge */}
                     <div
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        gap: "0.45rem",
-                        padding: "0.55rem 0.85rem",
-                        background: "rgba(37, 211, 102, 0.04)",
-                        border: "1px solid rgba(37, 211, 102, 0.1)",
-                        borderRadius: "0.75rem",
-                        marginTop: "-0.25rem",
+                        gap: "0.35rem",
+                        background: "rgba(37,211,102,0.08)",
+                        border: "1px solid rgba(37,211,102,0.2)",
+                        borderRadius: "9999px",
+                        padding: "0.4rem 0.85rem",
+                        flexShrink: 0,
                       }}
                     >
-                      <MessageCircle size={11} style={{ color: "#25D366", flexShrink: 0 }} />
-                      <p style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.4)", fontFamily: "'Inter', sans-serif", margin: 0, lineHeight: 1.3 }}>
-                        También para citas en{" "}
-                        <strong style={{ color: "rgba(255,255,255,0.6)" }}>Saltillo, Cadereyta, Guadalajara</strong>
-                        {" "}u otro lugar fuera de Monterrey.
-                      </p>
+                      <MessageCircle size={13} style={{ color: "#25D366" }} />
+                      <span
+                        style={{
+                          fontSize: "0.72rem",
+                          fontWeight: 700,
+                          color: "#25D366",
+                          fontFamily: "'Inter', sans-serif",
+                        }}
+                      >
+                        WhatsApp
+                      </span>
                     </div>
-                  )}
-                </div>
-              ))}
+                  </a>
+                ))}
+              </div>
+
+              {/* Footer note */}
+              <p
+                style={{
+                  fontSize: "0.65rem",
+                  color: "rgba(255,255,255,0.25)",
+                  fontFamily: "'Inter', sans-serif",
+                  textAlign: "center",
+                  marginTop: "1.25rem",
+                  lineHeight: 1.5,
+                }}
+              >
+                Las citas en fechas especiales son atendidas por la sucursal <strong style={{ color: "rgba(255,255,255,0.4)" }}>Contry (Alfonso Reyes)</strong>.
+              </p>
             </div>
           </motion.div>
         </div>
