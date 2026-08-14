@@ -139,7 +139,7 @@ export default function PrivacidadPage() {
                 Tienes derecho a conocer qué datos personales tenemos de ti, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es tu derecho solicitar la corrección de tu información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición). Estos se conocen como derechos <strong>ARCO</strong>.
               </p>
               <p style={{ marginTop: "0.5rem" }}>
-                Para el ejercicio de cualquiera de los derechos ARCO, deberás presentar la solicitud respectiva a través de un correo electrónico dirigido a <strong>contacto@allanatomy.com</strong> o directamente en la recepción de cualquiera de nuestras sucursales físicas.
+                Para el ejercicio de cualquiera de los derechos ARCO, deberás presentar la solicitud respectiva a través de un correo electrónico dirigido a <strong>contacto@allanatomy.com.mx</strong> o directamente en la recepción de cualquiera de nuestras sucursales físicas.
               </p>
             </div>
 

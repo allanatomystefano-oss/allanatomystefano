@@ -54,7 +54,7 @@ export default function LinksPage() {
     {
       title: "Sitio Web Oficial All Anatomy",
       subtitle: "Conoce nuestros servicios, atletas y sucursales",
-      url: "https://allanatomy.com",
+      url: "https://allanatomy.com.mx",
       icon: <Globe size={20} style={{ color: "#ea580c" }} />,
       borderColor: "rgba(234, 88, 12, 0.2)",
       highlight: false,

@@ -136,7 +136,7 @@ export default function Hero() {
                       color: "#fff",
                     }}
                   >
-                    📍 Saltillo: 14 Ago — Agendar Lugar
+                     📍 Saltillo: 21 Ago — Agendar Lugar
                   </span>
                 </motion.div>
               </Link>

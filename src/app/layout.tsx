@@ -20,11 +20,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "All Anatomy" }],
   creator: "All Anatomy",
-  metadataBase: new URL("https://allanatomy.com"),
+  metadataBase: new URL("https://allanatomy.com.mx"),
   openGraph: {
     type: "website",
     locale: "es_MX",
-    url: "https://allanatomy.com",
+    url: "https://allanatomy.com.mx",
     siteName: "All Anatomy",
     title: "All Anatomy | Quiropráctica y Terapia Deportiva en Monterrey",
     description:
