@@ -252,6 +252,29 @@ export default function BranchModal({ isOpen, onClose }: BranchModalProps) {
                       <ExternalLink size={10} style={{ opacity: 0.5 }} />
                     </a>
                   </div>
+
+                  {/* Note for Colorines: handles out-of-city bookings */}
+                  {branch.id === "colorines" && (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.45rem",
+                        padding: "0.55rem 0.85rem",
+                        background: "rgba(37, 211, 102, 0.04)",
+                        border: "1px solid rgba(37, 211, 102, 0.1)",
+                        borderRadius: "0.75rem",
+                        marginTop: "-0.25rem",
+                      }}
+                    >
+                      <MessageCircle size={11} style={{ color: "#25D366", flexShrink: 0 }} />
+                      <p style={{ fontSize: "0.68rem", color: "rgba(255,255,255,0.4)", fontFamily: "'Inter', sans-serif", margin: 0, lineHeight: 1.3 }}>
+                        También para citas en{" "}
+                        <strong style={{ color: "rgba(255,255,255,0.6)" }}>Saltillo, Cadereyta, Guadalajara</strong>
+                        {" "}u otro lugar fuera de Monterrey.
+                      </p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
