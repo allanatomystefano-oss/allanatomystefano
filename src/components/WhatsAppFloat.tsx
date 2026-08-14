@@ -47,6 +47,34 @@ export default function WhatsAppFloat() {
               />
             )}
 
+            {/* Label tooltip */}
+            <motion.div
+              initial={{ opacity: 0, y: 6, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                position: "absolute",
+                bottom: "calc(100% + 10px)",
+                right: 0,
+                background: "rgba(10,10,10,0.92)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(37,211,102,0.25)",
+                borderRadius: "0.85rem",
+                padding: "0.55rem 0.85rem",
+                whiteSpace: "nowrap",
+                pointerEvents: "none",
+              }}
+            >
+              <p style={{ fontSize: "0.7rem", fontWeight: 700, color: "#fff", fontFamily: "'Space Grotesk', sans-serif", margin: 0, lineHeight: 1.3 }}>
+                💬 Agendar cita en Monterrey
+              </p>
+              <p style={{ fontSize: "0.62rem", color: "rgba(255,255,255,0.45)", fontFamily: "'Inter', sans-serif", margin: "0.2rem 0 0", lineHeight: 1.3 }}>
+                Saltillo · Cadereyta · GDL · y más
+              </p>
+              {/* Arrow */}
+              <div style={{ position: "absolute", bottom: "-5px", right: "20px", width: "10px", height: "10px", background: "rgba(10,10,10,0.92)", border: "1px solid rgba(37,211,102,0.25)", borderTop: "none", borderLeft: "none", transform: "rotate(45deg)" }} />
+            </motion.div>
+
             <button
               onClick={() => setIsModalOpen(true)}
               id="float-whatsapp-btn"
