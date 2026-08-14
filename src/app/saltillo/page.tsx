@@ -100,7 +100,7 @@ export default function SaltilloPage() {
 
     const message = `¡Hola All Anatomy! Me gustaría agendar mi cita para el Ajuste Quiropráctico en Saltillo el jueves 21 de agosto.\n\nDetalles del Registro:\n- Nombre: ${formData.name}\n- WhatsApp: ${formData.phone}\n- Horario sugerido: ${formData.timeSlot}\n- Síntomas/Molestia: ${formData.symptoms || "Check-up general"}\n- Costo: $1,000 MXN (Efectivo)`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/528116394613?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/528134173857?text=${encodedMessage}`;
 
     setSubmitted(true);
     setTimeout(() => {
@@ -819,7 +819,7 @@ export default function SaltilloPage() {
                     <ArrowRight size={16} />
                   </button>
                   <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.3)", textAlign: "center", fontFamily: "'Inter', sans-serif", marginTop: "0.5rem", lineHeight: 1.4 }}>
-                    💬 Te atenderá la sucursal <strong style={{ color: "rgba(255,255,255,0.5)" }}>San Pedro (Colorines)</strong> — número exclusivo para citas en Saltillo, GDL y Cadereyta.
+                    💬 Te atenderá la sucursal <strong style={{ color: "rgba(255,255,255,0.5)" }}>Contry (Alfonso Reyes)</strong> — número exclusivo para citas en Saltillo, GDL y Cadereyta.
                   </p>
                 </form>
 

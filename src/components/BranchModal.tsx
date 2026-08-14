@@ -253,8 +253,8 @@ export default function BranchModal({ isOpen, onClose }: BranchModalProps) {
                     </a>
                   </div>
 
-                  {/* Note for Colorines: handles out-of-city bookings */}
-                  {branch.id === "colorines" && (
+                  {/* Note for Contry: handles out-of-city bookings */}
+                  {branch.id === "contry" && (
                     <div
                       style={{
                         display: "flex",
