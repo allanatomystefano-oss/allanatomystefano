@@ -16,11 +16,14 @@ const services = [
     color: "#7c3aed",
     title: "Quiropráctica",
     subtitle: "Ajustes vertebrales especializados",
-    price: "$850",
-    priceNote: "Sesión individual / Incluye ajuste y terapia manual",
+    prices: [
+      { label: "Ajuste — primera cita (15 min)", amount: "$1,000" },
+      { label: "Ajuste — 15 min", amount: "$800" },
+    ],
+    priceNote: "Pago en efectivo o transferencia",
     description: `La quiropráctica es una disciplina de salud enfocada en el diagnóstico y tratamiento de los trastornos del sistema musculoesquelético, especialmente de la columna vertebral. En All Anatomy, nuestros especialistas aplican técnicas de ajuste manual para restaurar la función articular, aliviar el dolor y mejorar la calidad de vida del paciente.
 
-Indicada para: dolor de espalda, dolor cervical, cefaleas tensionales, ciática, hernia discal, postura incorrecta, bruxismo relacionado con tensión cervical, y secuelas de lesiones musculares.`,
+Indicada para: dolor de espalda, dolor cervical, cefáleas tensionales, ciática, hernia discal, postura incorrecta, bruxismo relacionado con tensión cervical, y secuelas de lesiones musculares.`,
     benefits: [
       "Alivio del dolor sin medicamentos",
       "Mejora de la postura y movilidad",
@@ -35,8 +38,10 @@ Indicada para: dolor de espalda, dolor cervical, cefaleas tensionales, ciática,
     color: "#ea580c",
     title: "Descompresión Axial",
     subtitle: "Técnica propia certificada — exclusiva de All Anatomy",
-    price: "$1,200",
-    priceNote: "Sesión clínica especializada / Certificación SEP",
+    prices: [
+      { label: "Sesión clínica especializada", amount: "$1,200" },
+    ],
+    priceNote: "Certificación SEP / Pago en efectivo o transferencia",
     description: `La Descompresión Axial es la técnica insignia de All Anatomy, desarrollada y perfeccionada por nuestro equipo con reconocimiento oficial del Gobierno de México (SEP-Conocer / UNT México). Es especialmente efectiva para casos de hernia discal, estenosis espinal y compresión vertebral crónica.
 
 La técnica crea presión negativa intradiscal que favorece la retracción del material herniado, la hidratación del disco y la reducción del dolor, sin necesidad de cirugía.`,
@@ -53,11 +58,16 @@ La técnica crea presión negativa intradiscal que favorece la retracción del m
     id: "masaje",
     emoji: "💪",
     color: "#e63327",
-    title: "Masaje Deportivo",
-    price: "$800",
-    priceNote: "Sesión de 50 minutos / Descarga muscular y fascias",
-    subtitle: "Recuperación y rendimiento para atletas",
-    description: `El masaje deportivo en All Anatomy va más allá de la relajación. Nuestras técnicas especializadas abordan el tejido muscular profundo, los tendones y las fascias para acelerar la recuperación, prevenir lesiones y optimizar el rendimiento físico.
+    title: "Masaje Descontracturante",
+    prices: [
+      { label: "90 minutos", amount: "$1,200" },
+      { label: "1 hora", amount: "$750" },
+      { label: "30 minutos", amount: "$500" },
+      { label: "Infantil — menores de 14 (1 hora)", amount: "$600" },
+    ],
+    priceNote: "Pago en efectivo o transferencia",
+    subtitle: "Recuperación muscular profunda para todos",
+    description: `El masaje descontracturante en All Anatomy va más allá de la relajación. Nuestras técnicas especializadas abordan el tejido muscular profundo, los tendones y las fascias para acelerar la recuperación, prevenir lesiones y optimizar el rendimiento físico.
 
 Ideal tanto para deportistas competitivos como para personas con actividad física moderada que buscan mantener su cuerpo en condiciones óptimas.`,
     benefits: [
@@ -69,14 +79,16 @@ Ideal tanto para deportistas competitivos como para personas con actividad físi
     ],
   },
   {
-    id: "puncion",
+    id: "reset-muscular",
     emoji: "🎯",
     color: "#f5c518",
-    title: "Punción Seca",
-    price: "$750",
-    priceNote: "Sesión de tratamiento de puntos gatillo miofasciales",
-    subtitle: "Tratamiento efectivo del dolor miofascial",
-    description: `La punción seca es una técnica terapéutica que utiliza agujas de acupuntura (sin medicación) para tratar los puntos gatillo miofasciales — nódulos de tensión muscular que generan dolor referido y limitación funcional.
+    title: "Terapia de Reset Muscular",
+    prices: [
+      { label: "Sesión de 30 minutos", amount: "$1,500" },
+    ],
+    priceNote: "Pago en efectivo o transferencia",
+    subtitle: "Restauración profunda del tejido muscular",
+    description: `La Terapia de Reset Muscular es una técnica especializada que trata los puntos gatillo miofasciales — nódulos de tensión muscular que generan dolor referido y limitación funcional.
 
 Es especialmente efectiva para tendinitis, contracturas crónicas, dolor cervical, lumbalgia y recuperación post-lesión deportiva. Los resultados suelen notarse desde la primera o segunda sesión.`,
     benefits: [
@@ -253,21 +265,19 @@ export default function ServiciosPage() {
                       padding: "1.5rem",
                       display: "flex",
                       flexDirection: "column",
-                      gap: "0.25rem",
+                      gap: "0.5rem",
                     }}
                   >
-                    <div style={{ fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "'Inter', sans-serif", fontWeight: 700, color: "rgba(255,255,255,0.4)" }}>
+                    <div style={{ fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "'Inter', sans-serif", fontWeight: 700, color: "rgba(255,255,255,0.4)", marginBottom: "0.5rem" }}>
                       Costo del Servicio
                     </div>
-                    <div style={{ display: "flex", alignItems: "baseline", gap: "0.4rem" }}>
-                      <span style={{ fontSize: "2.25rem", fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800, color: "#fff" }}>
-                        {service.price}
-                      </span>
-                      <span style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)", fontFamily: "'Inter', sans-serif" }}>
-                        MXN / sesión
-                      </span>
-                    </div>
-                    <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.5)", fontFamily: "'Inter', sans-serif", marginTop: "0.25rem" }}>
+                    {service.prices.map((p, pi) => (
+                      <div key={pi} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: pi < service.prices.length - 1 ? "0.5rem" : 0, borderBottom: pi < service.prices.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none" }}>
+                        <span style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>{p.label}</span>
+                        <span style={{ fontSize: "1.15rem", fontFamily: "'Space Grotesk', sans-serif", fontWeight: 800, color: "#fff" }}>{p.amount}</span>
+                      </div>
+                    ))}
+                    <div style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.35)", fontFamily: "'Inter', sans-serif", marginTop: "0.5rem", borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "0.6rem" }}>
                       {service.priceNote}
                     </div>
                   </div>
@@ -328,7 +338,7 @@ export default function ServiciosPage() {
                         Agendar Sesión
                       </button>
                       <Link
-                        href={`/servicios/${service.id === "descompresion" ? "descompresion-axial" : service.id === "quiropractica" ? "quiropractica" : service.id === "masaje" ? "masaje-deportivo" : "puncion-seca"}`}
+                        href={`/servicios/${service.id === "descompresion" ? "descompresion-axial" : service.id === "quiropractica" ? "quiropractica" : service.id === "masaje" ? "masaje-deportivo" : "reset-muscular"}`}
                         style={{
                           display: "inline-flex",
                           alignItems: "center",
