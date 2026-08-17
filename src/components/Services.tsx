@@ -38,13 +38,13 @@ const services = [
     image: "/edgar/edgar-action-3.jpg",
   },
   {
-    id: "puncion",
+    id: "reset-muscular",
     emoji: "🎯",
-    title: "Punción Seca",
+    title: "Terapia de Reset Muscular",
     description:
-      "Tratamiento efectivo de puntos gatillo y dolor miofascial. Rápida recuperación de lesiones musculares crónicas sin medicamentos.",
+      "Tratamiento especializado de puntos gatillo y dolor miofascial. Restaura la función muscular, elimina contracturas crónicas y acelera la recuperación sin medicamentos.",
     color: "#f5c518",
-    href: "/servicios/puncion-seca",
+    href: "/servicios/reset-muscular",
     image: "/edgar/edgar-hq-1.jpg",
   },
 ];

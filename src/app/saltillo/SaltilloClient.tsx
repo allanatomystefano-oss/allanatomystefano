@@ -62,7 +62,6 @@ export default function SaltilloClient() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    timeSlot: "9:00 AM - 10:00 AM",
     symptoms: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -98,7 +97,7 @@ export default function SaltilloClient() {
       return;
     }
 
-    const message = `¡Hola All Anatomy! Me gustaría agendar mi cita para el Ajuste Quiropráctico en Saltillo el jueves 21 de agosto.\n\nDetalles del Registro:\n- Nombre: ${formData.name}\n- WhatsApp: ${formData.phone}\n- Horario sugerido: ${formData.timeSlot}\n- Síntomas/Molestia: ${formData.symptoms || "Check-up general"}\n- Costo: $1,000 MXN (Efectivo)`;
+    const message = `¡Hola All Anatomy! Me gustaría agendar mi cita para el Ajuste Quiropráctico en Saltillo el viernes 21 de agosto.\n\nDetalles del Registro:\n- Nombre: ${formData.name}\n- WhatsApp: ${formData.phone}\n- Síntomas/Molestia: ${formData.symptoms || "Check-up general"}\n- Costo: $1,000 MXN (Efectivo)`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/528134173857?text=${encodedMessage}`;
 
@@ -324,7 +323,7 @@ export default function SaltilloClient() {
             >
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <Calendar size={18} style={{ color: "#7c3aed" }} />
-                <span>Jueves 21 de Agosto</span>
+                <span>Viernes 21 de Agosto</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                 <Clock size={18} style={{ color: "#f5c518" }} />
@@ -696,7 +695,7 @@ export default function SaltilloClient() {
                   </div>
 
                   <p style={{ fontSize: "0.82rem", color: "rgba(255,255,255,0.45)", fontFamily: "'Inter', sans-serif", lineHeight: 1.45 }}>
-                    Solo se atenderán 30 pacientes este jueves. Registra tu horario preferido abajo para asegurar tu lugar.
+                    Solo se atenderán 30 pacientes este viernes. Registra tus datos abajo para asegurar tu lugar.
                   </p>
 
                   {/* Live Viewers Indicator */}
@@ -734,23 +733,6 @@ export default function SaltilloClient() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
-                  </div>
-
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-                    <label style={{ fontSize: "0.75rem", fontWeight: 600, color: "rgba(255,255,255,0.55)", fontFamily: "'Inter', sans-serif" }}>
-                      Bloque de Horario Sugerido
-                    </label>
-                    <select
-                      className="input-premium"
-                      style={{ background: "#141414", cursor: "pointer" }}
-                      value={formData.timeSlot}
-                      onChange={(e) => setFormData({ ...formData, timeSlot: e.target.value })}
-                    >
-                      <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
-                      <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                      <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-                      <option value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
-                    </select>
                   </div>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
@@ -1017,7 +999,7 @@ export default function SaltilloClient() {
               {[
                 {
                   q: "¿Cuándo y dónde será el evento?",
-                  a: "Se llevará a cabo el Jueves 21 de Agosto, de 9:00 AM a 1:00 PM, en Residencial Valle Real en Saltillo, Coahuila. La ubicación exacta y detalles de acceso se te enviarán por WhatsApp tras registrar tu solicitud.",
+                  a: "Se llevará a cabo el Viernes 21 de Agosto, de 9:00 AM a 1:00 PM, en Residencial Valle Real en Saltillo, Coahuila. La ubicación exacta y detalles de acceso se te enviarán por WhatsApp tras registrar tu solicitud.",
                 },
                 {
                   q: "¿Cuál es el costo y cómo se realiza el pago?",
